@@ -9,8 +9,8 @@ body {
   font-family: 'Quicksand', sans-serif;
   background-color: #f0fdf4;
   color: #2e4e3f;
-  opacity: 0; /* Added */
-  animation: fadeInBody 0.8s forwards; /* Added */
+  opacity: 0; 
+  animation: fadeInBody 0.8s forwards; 
 }
 body.home {
   opacity: 0;
@@ -163,30 +163,30 @@ header {
 
 .home .hero {
   height: 100vh;
-  background-color: #e8f5e9; /* soft green */
+  background-color: #e8f5e9; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: #065f46;
-  opacity: 0; /* Added */
-  animation: fadeInScale 1s ease-out forwards; /* Added */
+  opacity: 0; 
+  animation: fadeInScale 1s ease-out forwards; 
 }
 
 .home .hero h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
-  opacity: 0; /* Added */
-  transform: translateY(-20px); /* Added */
-  animation: slideInFromTop 1s ease-out forwards 0.5s; /* Added */
+  opacity: 0; 
+  transform: translateY(-20px); 
+  animation: slideInFromTop 1s ease-out forwards 0.5s; 
 }
 
 .home .scroll-hint {
   font-size: 1.2rem;
   color: #3b5249;
-  animation: bounce 2s infinite, fadeIn 1s ease-out forwards 1s; /* Modified: combined with fadeIn */
-  opacity: 0; /* Added for fadeIn */
+  animation: bounce 2s infinite; 
+  opacity: 0; 
 }
 
 @keyframes bounce {
@@ -201,8 +201,8 @@ header {
 .home .home-container {
   padding: 40px 20px;
   background-color: #f0fdf4;
-  opacity: 0; /* Added */
-  animation: fadeIn 1s ease-out forwards 1.5s; /* Added */
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards 1.5s; 
 }
 
 .home .intro {
@@ -210,8 +210,8 @@ header {
   margin: auto;
   text-align: center;
   margin-top: 60px;
-  opacity: 0; /* Added */
-  animation: fadeInUp 1s ease-out forwards 1.8s; /* Added */
+  opacity: 0; 
+  animation: fadeInUp 1s ease-out forwards 1.8s; 
 }
 
 .intro h2 {
@@ -227,14 +227,13 @@ header {
 
 .home .sections-grid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 40px;
   padding: 80px 20px;
   max-width: 1000px;
   margin: auto;
-  opacity: 0; /* Added */
-  transform: translateY(20px); /* Added */
-  animation: fadeInUp 0.8s ease-out forwards; /* Added */
+  opacity: 0; 
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards; 
 }
 
 .section-card {
@@ -279,8 +278,8 @@ header {
   max-width: 800px;
   margin: 0 auto;
   border-radius: 10px;
-  opacity: 0; /* Added */
-  animation: fadeInUp 1s ease-out forwards 1.8s; /* Added */
+  opacity: 0; 
+  animation: fadeInUp 1s ease-out forwards 1.8s; 
 }
 .about-container {
   max-width: 1000px;
