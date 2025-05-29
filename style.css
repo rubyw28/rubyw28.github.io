@@ -9,7 +9,66 @@ body {
   font-family: 'Quicksand', sans-serif;
   background-color: #f0fdf4;
   color: #2e4e3f;
+  opacity: 0; /* Added */
+  animation: fadeInBody 0.8s forwards; /* Added */
 }
+body.home {
+  opacity: 0;
+  animation:fadeInBody 0.8s forwards;
+}
+
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Existing @keyframes bounce remains */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
 
 .home-container {
   max-width: 1000px;
@@ -102,7 +161,7 @@ header {
   text-decoration: underline;
 }
 
-.hero {
+.home .hero {
   height: 100vh;
   background-color: #e8f5e9; /* soft green */
   display: flex;
@@ -111,17 +170,23 @@ header {
   align-items: center;
   text-align: center;
   color: #065f46;
+  opacity: 0; /* Added */
+  animation: fadeInScale 1s ease-out forwards; /* Added */
 }
 
-.hero h1 {
+.home .hero h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
+  opacity: 0; /* Added */
+  transform: translateY(-20px); /* Added */
+  animation: slideInFromTop 1s ease-out forwards 0.5s; /* Added */
 }
 
-.scroll-hint {
+.home .scroll-hint {
   font-size: 1.2rem;
   color: #3b5249;
-  animation: bounce 2s infinite;
+  animation: bounce 2s infinite, fadeIn 1s ease-out forwards 1s; /* Modified: combined with fadeIn */
+  opacity: 0; /* Added for fadeIn */
 }
 
 @keyframes bounce {
@@ -133,16 +198,20 @@ header {
   }
 }
 
-.home-container {
+.home .home-container {
   padding: 40px 20px;
   background-color: #f0fdf4;
+  opacity: 0; /* Added */
+  animation: fadeIn 1s ease-out forwards 1.5s; /* Added */
 }
 
-.intro {
+.home .intro {
   max-width: 800px;
   margin: auto;
   text-align: center;
   margin-top: 60px;
+  opacity: 0; /* Added */
+  animation: fadeInUp 1s ease-out forwards 1.8s; /* Added */
 }
 
 .intro h2 {
@@ -156,13 +225,16 @@ header {
   color: #3b5249;
 }
 
-.sections-grid {
+.home .sections-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
   padding: 80px 20px;
   max-width: 1000px;
   margin: auto;
+  opacity: 0; /* Added */
+  transform: translateY(20px); /* Added */
+  animation: fadeInUp 0.8s ease-out forwards; /* Added */
 }
 
 .section-card {
@@ -197,7 +269,7 @@ header {
   }
 }
 
-.guide {
+.home .guide {
   text-align: center;
   padding: 30px 20px;
   background-color: #e6f4ea;
@@ -207,6 +279,8 @@ header {
   max-width: 800px;
   margin: 0 auto;
   border-radius: 10px;
+  opacity: 0; /* Added */
+  animation: fadeInUp 1s ease-out forwards 1.8s; /* Added */
 }
 .about-container {
   max-width: 1000px;
@@ -278,3 +352,47 @@ header {
 .social-links a:hover {
   color: #2e7d32; /* darker green on hover */
 }
+
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
