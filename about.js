@@ -4,12 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const aboutContent = document.querySelector('.about-content');
     const moreAboutContent = document.querySelector('.more-about-content');
+    const mainNav = document.querySelector('nav'); // Select the nav element
 
     let showingMore = false; 
 
     // Set initial content visibility
     aboutContent.classList.remove('hidden');
     moreAboutContent.classList.remove('visible');
+    mainNav.style.display = 'block'; // Ensure nav is visible initially
 
     // Add click event listener to the toggle button
     toggleButton.addEventListener('click', () => {
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.add('inverted');
             aboutContent.classList.add('hidden');
             moreAboutContent.classList.add('visible');
+            mainNav.style.display = 'none'; // Hide the navigation
             toggleButton.setAttribute('aria-label', 'Go back to main about content');
             showingMore = true;
         } else {
@@ -25,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.remove('inverted');
             aboutContent.classList.remove('hidden');
             moreAboutContent.classList.remove('visible');
+            mainNav.style.display = 'block'; // Show the navigation
             toggleButton.innerHTML = '<i class="fas fa-lightbulb"></i>';
             toggleButton.setAttribute('aria-label', 'Learn more about Ruby');
             showingMore = false;
