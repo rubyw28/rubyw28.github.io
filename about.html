@@ -25,11 +25,11 @@
     </header>
     <section class="about-content">
       <div class="about-image">
-        <img src="images/Ruby.JPG" alt="Photo of Ruby Wu" />
+        <img src="images/ruby-nyc.jpg" alt="Photo of Ruby Wu" id="main-about-image" />
       </div>
       <div class="about-text">
         <h2>About Me</h2>
-        <p>Hi! I'm Ruby Wu.</p>
+        <p id="main-about-text">Hi! I'm Ruby Wu.</p>
         <p>I’m currently studying Electrical and Computer Engineering at Cornell University.</p>
         <p>Outside of coding, I love crafting, trying different foods, and exploring places. I’m always open to collaborating or talking about exciting ideas. Feel free to reach out!</p>
       </div>
@@ -42,6 +42,21 @@
         </a>
       </div>
     </section>
+
+    <button id="toggle-about-button" class="toggle-about-button" aria-label="Learn more about Ruby">
+      <i class="fas fa-lightbulb"></i>
+    </button>
+
+    <section class="more-about-content hidden">
+        <div class="more-about-text">
+            <h3>Play a Game of Golf!</h3>
+            <div class="canvas-container">
+                <canvas id="miniGolfCanvas" width="500" height="500"></canvas>
+            </div>
+        </div>
+    </section>
   </div>
+  <script src="about.js"></script>
+<script src="mini-golf-game.js"></script>
 </body>
 </html>
