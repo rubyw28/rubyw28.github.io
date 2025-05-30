@@ -4,34 +4,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const aboutContent = document.querySelector('.about-content');
     const moreAboutContent = document.querySelector('.more-about-content');
-    const mainNav = document.querySelector('nav'); // Select the nav element
+    const mainNav = document.querySelector('nav'); 
 
     let showingMore = false; 
 
     // Set initial content visibility
     aboutContent.classList.remove('hidden');
-    moreAboutContent.classList.remove('visible');
-    mainNav.style.display = 'block'; // Ensure nav is visible initially
+    moreAboutContent.classList.add('hidden'); 
+    mainNav.style.display = 'block'; 
 
     // Add click event listener to the toggle button
     toggleButton.addEventListener('click', () => {
         if (!showingMore) {
-            // Show more content and apply 'inverted' class
+            // Game becomes visible
             body.classList.add('inverted');
             aboutContent.classList.add('hidden');
-            moreAboutContent.classList.add('visible');
-            mainNav.style.display = 'none'; // Hide the navigation
+            moreAboutContent.classList.remove('hidden'); 
+            moreAboutContent.classList.add('visible'); 
+            mainNav.style.display = 'none';
             toggleButton.setAttribute('aria-label', 'Go back to main about content');
             showingMore = true;
+            body.classList.add('game-active');
+
         } else {
-            // Show original content and remove 'inverted' class
+            // Game becomes hidden
             body.classList.remove('inverted');
             aboutContent.classList.remove('hidden');
-            moreAboutContent.classList.remove('visible');
-            mainNav.style.display = 'block'; // Show the navigation
+            moreAboutContent.classList.add('hidden'); 
+            moreAboutContent.classList.remove('visible'); 
+            mainNav.style.display = 'block'; 
             toggleButton.innerHTML = '<i class="fas fa-lightbulb"></i>';
             toggleButton.setAttribute('aria-label', 'Learn more about Ruby');
             showingMore = false;
+            body.classList.remove('game-active');
         }
     });
 });
