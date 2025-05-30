@@ -12,7 +12,7 @@ let startX, startY;
 
 // Function to get a random position within the canvas, with padding
 function getRandomPosition(radius) {
-    const generationPadding = 50;
+    const generationPadding = 70;
     const minCoord = radius + generationPadding;
     const maxCoordX = canvas.width - (radius + generationPadding);
     const maxCoordY = canvas.height - (radius + generationPadding);
@@ -36,10 +36,10 @@ function resetPositions() {
     hole.y = holePos.y;
 }
 
-// Function to resize the canvas to fit the screen and make it square
+// Function to resize the canvas to fit the screen
 function resizeCanvas() {
     const baseSize = 600;
-    let newSize = Math.min(window.innerWidth * 0.95, window.innerHeight * 0.9, baseSize);
+    let newSize = Math.min(window.innerWidth * 0.7, window.innerHeight * 0.7, baseSize);
 
     canvas.width = newSize;
     canvas.height = newSize;
@@ -91,14 +91,6 @@ function drawCourse() {
     ctx.fill();
     ctx.shadowBlur = 0;
 
-    // Display current strokes during gameplay
-    if (gameStatus === "playing") {
-        ctx.fillStyle = "black";
-        ctx.font = "20px 'Inter', sans-serif";
-        ctx.textAlign = "left";
-        ctx.fillText(`Strokes: ${strokes}`, 10, 25);
-    }
-
     // Display messages based on gameStatus
     if (gameStatus === "won") {
         ctx.fillStyle = "black";
@@ -148,8 +140,15 @@ function updateBall() {
     }
 
     // Out of bounds detection
-    if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width ||
-        ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const playableRadius = (canvas.width / 2) + 15;
+
+    const dxBallFromCenter = ball.x - centerX;
+    const dyBallFromCenter = ball.y - centerY;
+    const distanceToCenter = Math.sqrt(dxBallFromCenter * dxBallFromCenter + dyBallFromCenter * dyBallFromCenter);
+
+    if (distanceToCenter + ball.radius > playableRadius) {
         gameStatus = "out_of_bounds";
         ball.vx = 0;
         ball.vy = 0;
