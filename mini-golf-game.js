@@ -39,7 +39,7 @@ function resetPositions() {
 // Function to resize the canvas to fit the screen
 function resizeCanvas() {
     const baseSize = 600;
-    let newSize = Math.min(window.innerWidth * 0.7, window.innerHeight * 0.7, baseSize);
+    let newSize = Math.min(window.innerWidth * 0.8, window.innerHeight * 0.8, baseSize);
 
     canvas.width = newSize;
     canvas.height = newSize;
