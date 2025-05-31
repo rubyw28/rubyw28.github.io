@@ -40,7 +40,7 @@ function getRandomPosition(itemRadius) {
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const minSpawnDistance = itemRadius * 10;
-    const maxSpawnDistance = gameBoundaryRadius - (itemRadius * 4);
+    const maxSpawnDistance = gameBoundaryRadius - (itemRadius * 6);
 
     if (maxSpawnDistance <= minSpawnDistance) {
         return { x: centerX, y: centerY };
