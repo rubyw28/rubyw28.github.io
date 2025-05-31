@@ -152,11 +152,13 @@ function updateBall() {
     if (gameStatus === "won" || gameStatus === "out_of_bounds") {
         return;
     }
-    // Apply friction
+    // Add friction
+    ball.x += ball.vx;
+    ball.y += ball.vy;
     ball.vx *= 0.97;
     ball.vy *= 0.97;
 
-    // Stop condition
+    //Stop condiction
     if (Math.abs(ball.vx) < 0.1 && Math.abs(ball.vy) < 0.1) {
         ball.vx = 0;
         ball.vy = 0;
