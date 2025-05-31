@@ -9,27 +9,46 @@ let gameStatus = "playing";
 let strokes = 0;
 let isDragging = false;
 let startX, startY;
+let currentDragX, currentDragY; 
+let gameBoundaryRadius; 
 
-// Function to get a random position within the canvas, with padding
-function getRandomPosition(radius) {
-    const generationPadding = 70;
-    const minCoord = radius + generationPadding;
-    const maxCoordX = canvas.width - (radius + generationPadding);
-    const maxCoordY = canvas.height - (radius + generationPadding);
+// New variables for shot prediction line
+let shotDirectionX = 0;
+let shotDirectionY = 0;
+let shotPower = 0; 
+const maxPredictionLineLength = 170; 
 
-    return {
-        x: Math.random() * (maxCoordX - minCoord) + minCoord,
-        y: Math.random() * (maxCoordY - minCoord) + minCoord
-    };
+// Function to get a random position within the circular playable area, with padding
+function getRandomPosition(itemRadius) {
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const minSpawnDistance = itemRadius * 10; 
+    const maxSpawnDistance = gameBoundaryRadius - (itemRadius * 4); 
+
+    if (maxSpawnDistance <= minSpawnDistance) {
+        return { x: centerX, y: centerY };
+    }
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * (maxSpawnDistance - minSpawnDistance) + minSpawnDistance;
+    const x = centerX + Math.cos(angle) * distance;
+    const y = centerY + Math.sin(angle) * distance;
+
+    return { x, y };
 }
 
 // Function to reset ball and hole positions
 function resetPositions() {
+    ball.x = 0; 
+    ball.y = 0;
     const ballPos = getRandomPosition(ball.radius);
     ball.x = ballPos.x;
     ball.y = ballPos.y;
     ball.vx = 0;
     ball.vy = 0;
+
+    shotDirectionX = 0;
+    shotDirectionY = 0;
+    shotPower = 0;
 
     const holePos = getRandomPosition(hole.radius);
     hole.x = holePos.x;
@@ -44,9 +63,10 @@ function resizeCanvas() {
     canvas.width = newSize;
     canvas.height = newSize;
 
+    gameBoundaryRadius = (canvas.width / 2) + 15;
+
     drawCourse();
     if (gameStatus === "won" || gameStatus === "out_of_bounds") {
-        // Do nothing, the game is waiting for a reset click
     } else {
         resetPositions();
     }
@@ -91,6 +111,24 @@ function drawCourse() {
     ctx.fill();
     ctx.shadowBlur = 0;
 
+    // Draw the shot prediction line if dragging and ball is stationary
+    if (isDragging && ball.vx === 0 && ball.vy === 0 && shotPower > 0) {
+        const lineLength = Math.min(shotPower * 1.5, maxPredictionLineLength); 
+
+        const angle = Math.atan2(shotDirectionY, shotDirectionX);
+        const endLineX = ball.x + Math.cos(angle) * lineLength;
+        const endLineY = ball.y + Math.sin(angle) * lineLength;
+
+        ctx.beginPath();
+        ctx.setLineDash([5, 5]); 
+        ctx.moveTo(ball.x, ball.y);
+        ctx.lineTo(endLineX, endLineY);
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.7)"; 
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.setLineDash([]); 
+    }
+
     // Display messages based on gameStatus
     if (gameStatus === "won") {
         ctx.fillStyle = "black";
@@ -114,10 +152,6 @@ function updateBall() {
     if (gameStatus === "won" || gameStatus === "out_of_bounds") {
         return;
     }
-
-    ball.x += ball.vx;
-    ball.y += ball.vy;
-
     // Apply friction
     ball.vx *= 0.97;
     ball.vy *= 0.97;
@@ -126,12 +160,15 @@ function updateBall() {
     if (Math.abs(ball.vx) < 0.1 && Math.abs(ball.vy) < 0.1) {
         ball.vx = 0;
         ball.vy = 0;
+        shotDirectionX = 0;
+        shotDirectionY = 0;
+        shotPower = 0;
     }
 
     // Win detection
     const dx = ball.x - hole.x;
     const dy = ball.y - hole.y;
-    if (Math.sqrt(dx * dx + dy * dy) < hole.radius - 3) {
+    if (Math.sqrt(dx * dx + dy * dy) < hole.radius - 3) { 
         gameStatus = "won";
         ball.vx = 0;
         ball.vy = 0;
@@ -139,16 +176,14 @@ function updateBall() {
         return;
     }
 
-    // Out of bounds detection
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
-    const playableRadius = (canvas.width / 2) + 15;
 
     const dxBallFromCenter = ball.x - centerX;
     const dyBallFromCenter = ball.y - centerY;
     const distanceToCenter = Math.sqrt(dxBallFromCenter * dxBallFromCenter + dyBallFromCenter * dyBallFromCenter);
 
-    if (distanceToCenter + ball.radius > playableRadius) {
+    if (distanceToCenter + ball.radius > gameBoundaryRadius) {
         gameStatus = "out_of_bounds";
         ball.vx = 0;
         ball.vy = 0;
@@ -173,12 +208,18 @@ function resetGame() {
 // Event listeners for mouse/touch
 canvas.addEventListener("mousedown", handleStart);
 canvas.addEventListener("touchstart", handleStart);
-canvas.addEventListener("mouseup", handleEnd);
-canvas.addEventListener("touchend", handleEnd);
+
+// Attach global listeners
+window.addEventListener("mousemove", handleMove); 
+window.addEventListener("touchmove", handleMove); 
+window.addEventListener("mouseup", handleEnd); 
+window.addEventListener("touchend", handleEnd);
 
 // Handle start of click/touch
 function handleStart(e) {
-    e.preventDefault();
+    if (e.target === canvas) {
+        e.preventDefault();
+    }
 
     if (gameStatus === "won" || gameStatus === "out_of_bounds") {
         resetGame();
@@ -196,41 +237,74 @@ function handleStart(e) {
     const rect = canvas.getBoundingClientRect();
     startX = clientX - rect.left;
     startY = clientY - rect.top;
+
+    // Initialize these for the line to appear immediately
+    currentDragX = startX; 
+    currentDragY = startY;
+    shotDirectionX = 0;
+    shotDirectionY = 0;
+    shotPower = 0;
+
+    drawCourse(); 
 }
 
-// Handle end of click/touch
-function handleEnd(e) {
-    e.preventDefault();
-
+// Handle movement during click/touch
+function handleMove(e) {
     if (!isDragging) {
-        return;
+        return; 
     }
-    isDragging = false;
-
-    if (gameStatus === "won" || gameStatus === "out_of_bounds") {
-        return;
-    }
+    
+    e.preventDefault();
 
     if (ball.vx !== 0 || ball.vy !== 0) {
         return;
     }
 
-    strokes++;
-
-    const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
-    const clientY = e.changedTouches ? e.changedTouches[0].clientY : e.clientY;
-
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     const rect = canvas.getBoundingClientRect();
-    const endX = clientX - rect.left;
-    const endY = clientY - rect.top;
+    currentDragX = clientX - rect.left;
+    currentDragY = clientY - rect.top;
+    const dx = currentDragX - startX;
+    const dy = currentDragY - startY;
+    shotDirectionX = -dx; 
+    shotDirectionY = -dy;
+    shotPower = Math.sqrt(dx * dx + dy * dy); 
+    drawCourse(); 
+}
 
-    const dx = endX - startX;
-    const dy = endY - startY;
+// Handle end of click/touch
+function handleEnd(e) {
+    if (!isDragging) {
+        return; 
+    }
+    
+    e.preventDefault();
+    isDragging = false; 
 
-    ball.vx = dx * 0.1;
-    ball.vy = dy * 0.1;
+    if (gameStatus === "playing" && ball.vx === 0 && ball.vy === 0) {
+        strokes++;
 
-    updateBall();
+        const magnitude = Math.sqrt(shotDirectionX * shotDirectionX + shotDirectionY * shotDirectionY);
+        if (magnitude > 0) {
+            const normalizedShotDX = shotDirectionX / magnitude;
+            const normalizedShotDY = shotDirectionY / magnitude;
+
+            const effectiveShotPower = Math.min(shotPower * 1.5, maxPredictionLineLength) / 1.5;
+
+            const velocityScale = 0.1; 
+            ball.vx = normalizedShotDX * effectiveShotPower * velocityScale;
+            ball.vy = normalizedShotDY * effectiveShotPower * velocityScale;
+        }
+
+        updateBall();
+    } else {
+        shotDirectionX = 0;
+        shotDirectionY = 0;
+        shotPower = 0;
+    }
+
+    drawCourse(); 
 }
 
 // Initial setup when the window loads

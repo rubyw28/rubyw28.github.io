@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             moreAboutContent.classList.add('hidden'); 
             moreAboutContent.classList.remove('visible'); 
             mainNav.style.display = 'block'; 
-            toggleButton.innerHTML = '<i class="fas fa-lightbulb"></i>';
             toggleButton.setAttribute('aria-label', 'Learn more about Ruby');
             showingMore = false;
             body.classList.remove('game-active');
