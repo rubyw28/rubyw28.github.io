@@ -284,7 +284,7 @@ body.inverted .guide {
     color: #d1fae5;
 }
 
-/* About Section Elements - REFINED TOP PADDING */
+/* About Section Elements */
 .about-container {
     max-width: 1000px;
     margin: auto;
@@ -321,7 +321,7 @@ body.inverted .about-container {
 }
 
 /* Media query for desktop layout of about-content */
-@media (min-width: 768px) {
+@media (min-width: 850px) {
     .about-content {
         flex-direction: row;
         align-items: flex-start;
@@ -337,13 +337,26 @@ body.inverted .about-container {
 }
 
 .about-image img {
-    width: 250px;
-    height: 250px;
+    max-width: 300px;
+    height: auto;
     border-radius: 15px;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #d1fae5;
     transition: border-color 0.5s ease;
+}
+
+/* Adjust image size for smaller screens while maintaining aspect ratio */
+@media (max-width: 768px) {
+    .about-image img {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-image img {
+        max-width: 250px;
+    }
 }
 
 /* Dark mode about image border */
@@ -477,17 +490,20 @@ body.inverted .toggle-about-button:hover {
     right: 20px;
     max-width: 960px;
 
-    @media (min-width: 768px) {
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-    }
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.5s ease, visibility 0.5s ease, top 0.5s ease;
     z-index: 500;
+}
+
+/* Media query for more-about-content positioning on larger screens */
+@media (min-width: 768px) {
+    .more-about-content {
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
 }
 
 /* Visibility for more-about-content */
