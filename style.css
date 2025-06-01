@@ -23,14 +23,40 @@ body.inverted {
 }
 
 /* Header and navigation styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0fdf4;
+    z-index: 1001;
+    transition: background-color 0.5s ease;
+}
+
+body.inverted header {
+    background-color: #2e4e3f;
+}
+
 header .logo {
     color: #2e4e3f;
     transition: color 0.5s ease;
+    margin-left: 20px;
 }
 
 /* Dark mode logo color */
 body.inverted header .logo {
     color: #f0fdf4;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
 }
 
 .nav-links a {
@@ -61,12 +87,15 @@ body.inverted .nav-links a:hover {
 
 /* Home section elements */
 .home .hero {
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.home .hero h1 {
-    color: #065f46;
-    transition: color 0.5s ease;
+    height: 100vh;
+    background-color: #e8f5e9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInScale 1s ease-out forwards;
 }
 
 /* Dark mode hero section styles */
@@ -93,6 +122,10 @@ body.inverted .home .scroll-hint {
 .home .home-container {
     background-color: #f0fdf4;
     transition: background-color 0.5s ease;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    padding-top: 40px;
 }
 
 /* Dark mode home container background */
@@ -120,9 +153,20 @@ body.inverted .intro p {
     color: #d1fae5;
 }
 
+
+/* Projects section layout */
+.projects-section {
+    margin: auto;
+    max-width: 1000px;
+    padding: 20px;
+    padding-top: 120px;
+}
+
 .projects-section h2 {
     color: #065f46;
     transition: color 0.5s ease;
+    font-size: 2rem;
+    margin-bottom: 40px;
 }
 
 /* Dark mode projects section h2 color */
@@ -134,6 +178,9 @@ body.inverted .projects-section h2 {
     background-color: #d1fae5;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 /* Dark mode project card styles */
@@ -145,6 +192,7 @@ body.inverted .project-card {
 .project-card h3 {
     color: #2e4e3f;
     transition: color 0.5s ease;
+    margin-bottom: 10px;
 }
 
 /* Dark mode project card h3 color */
@@ -155,6 +203,7 @@ body.inverted .project-card h3 {
 .project-card p {
     color: #3b5249;
     transition: color 0.5s ease;
+    margin-bottom: 10px;
 }
 
 /* Dark mode project card paragraph color */
@@ -165,11 +214,12 @@ body.inverted .project-card p {
 .project-card a {
     color: #065f46;
     transition: color 0.5s ease;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-/* Dark mode project card link color */
-body.inverted .project-card a {
-    color: #f0fdf4;
+.project-card a:hover {
+    text-decoration: underline;
 }
 
 .section-card {
@@ -217,9 +267,15 @@ body.inverted .section-card p {
 }
 
 .home .guide {
-    background-color: #e6f4ea;
-    color: #3b5249;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 1.2rem;
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 10px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards 1.8s;
 }
 
 /* Dark mode guide styles */
@@ -228,16 +284,17 @@ body.inverted .guide {
     color: #d1fae5;
 }
 
-/* About Section Elements */
+/* About Section Elements - REFINED TOP PADDING */
 .about-container {
     max-width: 1000px;
     margin: auto;
     padding: 20px;
+    padding-top: 120px;
     font-family: 'Quicksand', sans-serif;
     position: relative;
     background-color: #f0fdf4;
     transition: background-color 0.5s ease;
-    padding-top: 60px; 
+    min-height: 500px;
 }
 
 /* Dark mode about container styles */
@@ -247,7 +304,44 @@ body.inverted .about-container {
     transition: background-color 0.5s ease, box-shadow 0.5s ease;
 }
 
+/* IMPORTANT: General image responsiveness */
+.about-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Original About content layout */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    padding-bottom: 40px;
+}
+
+/* Media query for desktop layout of about-content */
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+/* Hidden state for about content */
+.about-content.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .about-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border: 2px solid #d1fae5;
     transition: border-color 0.5s ease;
 }
@@ -257,9 +351,23 @@ body.inverted .about-image img {
     border: 2px solid #065f46;
 }
 
+.about-text {
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Media query to align about-text left on larger screens */
+@media (min-width: 768px) {
+    .about-text {
+        text-align: left;
+    }
+}
+
 .about-text h2 {
     color: #065f46;
     transition: color 0.5s ease;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 /* Dark mode about text h2 color */
@@ -270,6 +378,9 @@ body.inverted .about-text h2 {
 .about-text p {
     color: #3b5249;
     transition: color 0.5s ease;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
 }
 
 /* Dark mode about text paragraph color */
@@ -277,7 +388,23 @@ body.inverted .about-text p {
     color: #d1fae5;
 }
 
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Media query to align social links left on larger screens */
+@media (min-width: 768px) {
+    .social-links {
+        justify-content: flex-start;
+    }
+}
+
 .social-links a {
+    font-size: 2.5rem;
+    text-decoration: none;
     color: #065f46;
     transition: color 0.5s ease;
 }
@@ -285,6 +412,10 @@ body.inverted .about-text p {
 /* Dark mode social links color */
 body.inverted .social-links a {
     color: #d1fae5;
+}
+
+.social-links a:hover {
+    color: #2e7d32;
 }
 
 /* Toggle Button - Lightbulb style (Fixed to bottom-right) */
@@ -337,12 +468,26 @@ body.inverted .toggle-about-button:hover {
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    padding: 40px 10px;
-    margin-top: 10px;
+    padding: 40px 20px;
+    margin: 0;
+
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    right: 20px;
+    max-width: 960px;
+
+    @media (min-width: 768px) {
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+    }
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease, top 0.5s ease;
+    z-index: 500;
 }
 
 /* Visibility for more-about-content */
@@ -354,7 +499,7 @@ body.inverted .toggle-about-button:hover {
 
 .more-about-content .more-about-image img {
     width: 250px;
-    height: auto;
+    height: 250px;
     border-radius: 15px;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -362,7 +507,14 @@ body.inverted .toggle-about-button:hover {
 
 .more-about-content .more-about-text {
     max-width: 600px;
-    text-align: left;
+    text-align: center;
+}
+
+/* Media query to align more-about-text left on larger screens */
+@media (min-width: 768px) {
+    .more-about-content .more-about-text {
+        text-align: left;
+    }
 }
 
 .more-about-content .more-about-text h2 {
@@ -442,29 +594,6 @@ body.inverted .toggle-about-button:hover {
     }
 }
 
-/* Home section layout */
-.home-container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    padding-top: 60px; 
-}
-
-/* Header layout */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-}
-
-/* Navigation links layout */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
 /* Intro section layout */
 .intro {
     margin-top: 50px;
@@ -477,40 +606,6 @@ header {
 
 .intro p {
     font-size: 1.2rem;
-}
-
-/* Projects section layout */
-.projects-section {
-    margin-top: 40px;
-}
-
-.projects-section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-/* Project card layout */
-.project-card {
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-
-.project-card h3 {
-    margin-bottom: 10px;
-}
-
-.project-card p {
-    margin-bottom: 10px;
-}
-
-.project-card a {
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.project-card a:hover {
-    text-decoration: underline;
 }
 
 /* Hero section specific styles and animations */
@@ -608,85 +703,6 @@ header {
     animation: fadeInUp 1s ease-out forwards 1.8s;
 }
 
-/* About container styles */
-.about-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-
-}
-
-/* Hidden state for about content - changed to display: none; */
-.about-content.hidden {
-    opacity: 0;
-    visibility: hidden; 
-    pointer-events: none; 
-    display: none; /
-}
-
-.about-image img {
-    width: 250px;
-    height: auto;
-    border-radius: 15px;
-    object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.about-text {
-    max-width: 600px;
-    text-align: left;
-}
-
-.about-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
-}
-
-/* Media query for about content layout */
-@media (min-width: 768px) {
-    .about-content {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .about-text {
-        text-align: left;
-    }
-}
-
-/* Social links styling */
-.social-links {
-    margin-top: 30px;
-    display: flex;
-    gap: 30px;
-    justify-content: flex-start;
-}
-
-.social-links a {
-    font-size: 2.5rem;
-    text-decoration: none;
-}
-
-.social-links a:hover {
-    color: #2e7d32;
-}
-
-/* Media query for more-about-content layout */
-@media (min-width: 768px) {
-    .more-about-content {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-}
-
 /* Canvas container for centering */
 .canvas-container {
     display: flex;
@@ -703,20 +719,6 @@ header {
     border: 2px solid #4CAF50;
     border-radius: 50%;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* More About Content layout adjustments */
-.more-about-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-/* More About Text alignment */
-.more-about-text {
-    text-align: center;
-    width: 100%;
 }
 
 /* Prevent scrolling when Mini Golf active */
