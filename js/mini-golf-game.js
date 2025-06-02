@@ -24,7 +24,7 @@ let startX, startY;
 let currentDragX, currentDragY;
 let gameBoundaryRadius;
 
-// New variable for shot prediction line
+// Variable for shot prediction line
 let shotDirectionX = 0;
 let shotDirectionY = 0;
 let shotPower = 0;
@@ -35,8 +35,9 @@ const centeringDurationFrames = 30;
 const centeringSpeed = 0.1;
 const sinkProximityThreshold = 0.5;
 
-// New variable for Hole-in-One Streak
-let holeInOneStreak = 0; // Initialize the streak counter
+// Variable for Hole-in-One Streak
+let holeInOneStreak = 0;
+let previousHoleInOneStreak = 0;
 
 // Function to get a random position within the circular playable area, with padding
 function getRandomPosition(itemRadius) {
@@ -168,12 +169,17 @@ function drawCourse() {
 
         ctx.font = "bold 15px 'Quicksand', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
-    } else if (gameStatus === "out_of_bounds") {
+    } else if (gameStatus === "out_of_bounds" || (gameStatus === "lost_streak" && previousHoleInOneStreak > 0)) {
         ctx.fillStyle = "red";
         ctx.textAlign = "center";
 
         ctx.font = "bold 20px 'Quicksand', sans-serif";
-        ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
+        if (gameStatus === "lost_streak") {
+            ctx.fillText(`Hole in One Streak Broken: ${previousHoleInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
+        } else {
+            ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
+        }
+        
 
         ctx.font = "bold 30px 'Quicksand', sans-serif";
         ctx.fillText(`Hole in ${strokes}!`, canvas.width / 2, canvas.height / 2 + 10);
@@ -185,7 +191,7 @@ function drawCourse() {
 
 // Function to update ball position based on velocity
 function updateBall() {
-    if (gameStatus === "won" || gameStatus === "out_of_bounds") {
+    if (gameStatus === "won" || gameStatus === "out_of_bounds" || gameStatus === "lost_streak") {
         return;
     }
 
@@ -206,7 +212,11 @@ function updateBall() {
             if (strokes === 1) {
                 holeInOneStreak++;
             } else {
-                holeInOneStreak = 0; // Reset streak if not a hole-in-one
+                previousHoleInOneStreak = holeInOneStreak;
+                holeInOneStreak = 0;
+                if (previousHoleInOneStreak > 0) {
+                    gameStatus = "lost_streak"; 
+                }
             }
             drawCourse();
             return;
@@ -266,15 +276,20 @@ function updateBall() {
 
     // Handles out of bound condition
     if (distanceToCenter + ball.radius > gameBoundaryRadius) {
-        gameStatus = "out_of_bounds";
+        previousHoleInOneStreak = holeInOneStreak;
+        holeInOneStreak = 0;
+        if (previousHoleInOneStreak > 0) {
+            gameStatus = "lost_streak"; 
+        } else {
+            gameStatus = "out_of_bounds";
+        }
         ball.vx = 0;
         ball.vy = 0;
-        holeInOneStreak = 0; // Reset streak if out of bounds
         drawCourse();
         return;
     }
 
-    drawCourse(); // Redraw the course and ball
+    drawCourse();
     if (ball.vx !== 0 || ball.vy !== 0 || ball.isSinking) {
         requestAnimationFrame(updateBall);
     }
@@ -303,7 +318,7 @@ function handleStart(e) {
         e.preventDefault();
     }
 
-    if (gameStatus === "won" || gameStatus === "out_of_bounds") {
+    if (gameStatus === "won" || gameStatus === "out_of_bounds" || gameStatus === "lost_streak") {
         resetGame();
         return;
     }
