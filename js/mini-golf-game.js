@@ -28,7 +28,7 @@ let gameBoundaryRadius;
 let shotDirectionX = 0;
 let shotDirectionY = 0;
 let shotPower = 0;
-const maxPredictionLineLength = 170;
+let maxPredictionLineLength;
 const bounceSpeedThreshold = 5;
 const bounceFactor = 0.7;
 const centeringDurationFrames = 30;
@@ -91,6 +91,9 @@ function resizeCanvas() {
     canvas.height = newSize;
 
     gameBoundaryRadius = (canvas.width / 2) + 15;
+
+    // Calculate maxPredictionLineLength based on canvas size
+    maxPredictionLineLength = newSize * 0.5; 
 
     drawCourse();
     if (gameStatus === "won" || gameStatus === "out_of_bounds") {
@@ -182,7 +185,7 @@ function drawCourse() {
         
 
         ctx.font = "bold 30px 'Quicksand', sans-serif";
-        ctx.fillText(`Hole in ${strokes}!`, canvas.width / 2, canvas.height / 2 + 10);
+        ctx.fillText(`Out of bound!`, canvas.width / 2, canvas.height / 2 + 10);
 
         ctx.font = "bold 15px 'Quicksand', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
@@ -208,7 +211,6 @@ function updateBall() {
             ball.y = ball.sinkTargetY;
             ball.isSinking = false;
             gameStatus = "won";
-            // Check for Hole-in-One and update streak
             if (strokes === 1) {
                 holeInOneStreak++;
             } else {
