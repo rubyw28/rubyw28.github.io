@@ -172,20 +172,27 @@ function drawCourse() {
 
         ctx.font = "bold 15px 'Quicksand', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
-    } else if (gameStatus === "out_of_bounds" || (gameStatus === "lost_streak" && previousHoleInOneStreak > 0)) {
+    } else if (gameStatus === "lost_streak") {
         ctx.fillStyle = "red";
         ctx.textAlign = "center";
 
         ctx.font = "bold 20px 'Quicksand', sans-serif";
-        if (gameStatus === "lost_streak") {
-            ctx.fillText(`Hole in One Streak Broken: ${previousHoleInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
-        } else {
-            ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
-        }
-        
+        ctx.fillText(`Hole in One Streak: ${previousHoleInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
 
         ctx.font = "bold 30px 'Quicksand', sans-serif";
-        ctx.fillText(`Out of bound!`, canvas.width / 2, canvas.height / 2 + 10);
+        ctx.fillText(`Streak Lost!`, canvas.width / 2, canvas.height / 2 + 10);
+
+        ctx.font = "bold 15px 'Quicksand', sans-serif";
+        ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
+    } else if (gameStatus === "out_of_bounds") {
+        ctx.fillStyle = "red";
+        ctx.textAlign = "center";
+
+        ctx.font = "bold 20px 'Quicksand', sans-serif";
+        ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
+
+        ctx.font = "bold 30px 'Quicksand', sans-serif";
+        ctx.fillText(`Out of Bounds!`, canvas.width / 2, canvas.height / 2 + 10);
 
         ctx.font = "bold 15px 'Quicksand', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
