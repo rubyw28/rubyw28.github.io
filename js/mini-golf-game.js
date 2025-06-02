@@ -24,7 +24,7 @@ let startX, startY;
 let currentDragX, currentDragY;
 let gameBoundaryRadius;
 
-// New variables for shot prediction line
+// New variable for shot prediction line
 let shotDirectionX = 0;
 let shotDirectionY = 0;
 let shotPower = 0;
@@ -34,6 +34,9 @@ const bounceFactor = 0.7;
 const centeringDurationFrames = 30;
 const centeringSpeed = 0.1;
 const sinkProximityThreshold = 0.5;
+
+// New variable for Hole-in-One Streak
+let holeInOneStreak = 0; // Initialize the streak counter
 
 // Function to get a random position within the circular playable area, with padding
 function getRandomPosition(itemRadius) {
@@ -129,7 +132,7 @@ function drawCourse() {
     ctx.beginPath();
     ctx.arc(ball.x, ball.y + ball.displayYOffset, ball.displayRadius, 0, Math.PI * 2);
     ctx.fillStyle = "#FFFFFF";
-    ctx.shadowColor = "rgba(0,0,0,0.2)"; 
+    ctx.shadowColor = "rgba(0,0,0,0.2)";
     ctx.shadowBlur = 4;
     ctx.fill();
     ctx.shadowBlur = 0;
@@ -143,10 +146,10 @@ function drawCourse() {
         const endLineY = ball.y + Math.sin(angle) * lineLength;
 
         ctx.beginPath();
-        ctx.setLineDash([5, 5]); 
+        ctx.setLineDash([5, 5]);
         ctx.moveTo(ball.x, ball.y);
         ctx.lineTo(endLineX, endLineY);
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.7)"; 
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.7)";
         ctx.lineWidth = 2;
         ctx.stroke();
         ctx.setLineDash([]);
@@ -155,18 +158,28 @@ function drawCourse() {
     // Display messages based on gameStatus
     if (gameStatus === "won") {
         ctx.fillStyle = "black";
-        ctx.font = "30px 'Inter', sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText(`Hole in ${strokes}!`, canvas.width / 2, canvas.height / 2);
-        ctx.font = "15px 'Inter', sans-serif";
-        ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 30);
+
+        ctx.font = "bold 20px 'Quicksand', sans-serif";
+        ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
+
+        ctx.font = "bold 30px 'Quicksand', sans-serif";
+        ctx.fillText(`Hole in ${strokes}!`, canvas.width / 2, canvas.height / 2 + 10);
+
+        ctx.font = "bold 15px 'Quicksand', sans-serif";
+        ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
     } else if (gameStatus === "out_of_bounds") {
         ctx.fillStyle = "red";
-        ctx.font = "25px 'Inter', sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("Out of Bounds!", canvas.width / 2, canvas.height / 2);
-        ctx.font = "15px 'Inter', sans-serif";
-        ctx.fillText("Tap or click to try again!", canvas.width / 2, canvas.height / 2 + 30);
+
+        ctx.font = "bold 20px 'Quicksand', sans-serif";
+        ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
+
+        ctx.font = "bold 30px 'Quicksand', sans-serif";
+        ctx.fillText(`Hole in ${strokes}!`, canvas.width / 2, canvas.height / 2 + 10);
+
+        ctx.font = "bold 15px 'Quicksand', sans-serif";
+        ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
     }
 }
 
@@ -189,6 +202,12 @@ function updateBall() {
             ball.y = ball.sinkTargetY;
             ball.isSinking = false;
             gameStatus = "won";
+            // Check for Hole-in-One and update streak
+            if (strokes === 1) {
+                holeInOneStreak++;
+            } else {
+                holeInOneStreak = 0; // Reset streak if not a hole-in-one
+            }
             drawCourse();
             return;
         }
@@ -250,6 +269,7 @@ function updateBall() {
         gameStatus = "out_of_bounds";
         ball.vx = 0;
         ball.vy = 0;
+        holeInOneStreak = 0; // Reset streak if out of bounds
         drawCourse();
         return;
     }
