@@ -169,6 +169,31 @@ body.inverted .intro p {
     margin-bottom: 40px;
 }
 
+/* Styling for project images */
+.project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #065f46;
+    transition: transform 0.3s ease;
+}
+
+.project-card .project-image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for the image */
+.project-card:hover .project-image {
+    transform: scale(1.02);
+}
+
+/* Dark mode adjustment for image border */
+body.inverted .project-image {
+    border-color: #d1fae5;
+}
+
 /* Dark mode projects section h2 color */
 body.inverted .projects-section h2 {
     color: #d1fae5;

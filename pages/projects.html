@@ -24,12 +24,19 @@
         <h2>My Projects</h2>
         <div class="project-card">
             <h3>Autonomous Drawing Car</h3>
+            <img src="../images/drawing-car.png" alt="Autonomous Drawing Car" class="project-image">
             <p>
                 An autonomous drawing car that turns mouse-drawn inputs displayed on a VGA GUI into real-world motion by wirelessly driving a robot car along digitally generated paths.
                 We built an autonomous drawing system using two Raspberry Pi Pico Ws that communicate over UDP. One Pico W interfaces with a PC, handling mouse input and VGA output to generate and display waypoints. These waypoints are transmitted wirelessly to a second Pico W mounted on a car. The car uses a 9-axis IMU to determine its orientation, computes PWM values, and drives its motors to reach each target point. The system supports two operating modes. In direct-follow mode, the car traces the path exactly as drawn. In optimized-route mode, the car calculates the shortest path through all points, improving efficiency while preserving the overall flow.
             </p>
-            <a href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank">View Demo</a> 
+            <a href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank">Video Demo</a> 
             <a href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank">Project Website</a>
+        </div>
+        <div class="project-card">
+            <h3>DORA Laser Tracking Control System</h3>
+            <p>
+                 As a Software Engineering and Research Intern at NASA JPL, I developed a Python-based full-stack control system for the Deployable Optical Receiver Aperture (DORA), integrating MQTT communication and real-time telemetry to control precision laser tracking. I built RESTful APIs and an interactive React dashboard for live status monitoring, configuration editing, and command input. I also implemented Bit Error Rate (BER) analysis using NumPy and Pandas, and wrote integration tests to ensure reliable communication with embedded systems.
+            </p>
         </div>
         <div class="project-card">
             <h3>Personal Portfolio Website</h3>
@@ -40,12 +47,7 @@
             <a href="#" target="_blank">GitHub Repo</a> -->
         </div>
 
-        <div class="project-card">
-            <h3>DORA Laser Tracking Control System</h3>
-            <p>
-                 As a Software Engineering and Research Intern at NASA JPL, I developed a Python-based full-stack control system for the Deployable Optical Receiver Aperture (DORA), integrating MQTT communication and real-time telemetry to control precision laser tracking. I built RESTful APIs and an interactive React dashboard for live status monitoring, configuration editing, and command input. I also implemented Bit Error Rate (BER) analysis using NumPy and Pandas, and wrote integration tests to ensure reliable communication with embedded systems.
-            </p>
-        </div>
+        
         <!-- add more projects -->
         </section>
     </div>
