@@ -22,7 +22,15 @@
 
         <section class="projects-section">
         <h2>My Projects</h2>
-
+        <div class="project-card">
+            <h3>Autonomous Drawing Car</h3>
+            <p>
+                An autonomous drawing car that turns mouse-drawn inputs displayed on a VGA GUI into real-world motion by wirelessly driving a robot car along digitally generated paths.
+                We built an autonomous drawing system using two Raspberry Pi Pico Ws that communicate over UDP. One Pico W interfaces with a PC, handling mouse input and VGA output to generate and display waypoints. These waypoints are transmitted wirelessly to a second Pico W mounted on a car. The car uses a 9-axis IMU to determine its orientation, computes PWM values, and drives its motors to reach each target point. The system supports two operating modes. In direct-follow mode, the car traces the path exactly as drawn. In optimized-route mode, the car calculates the shortest path through all points, improving efficiency while preserving the overall flow.
+            </p>
+            <a href="#" target="https://www.youtube.com/watch?v=8FTqkum7d4I&feature=youtu.be">View Demo</a> 
+            <a href="#" target="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html">Project Website</a>
+        </div>
         <div class="project-card">
             <h3>Personal Portfolio Website</h3>
             <p>
@@ -31,6 +39,7 @@
             <!-- <a href="#" target="_blank">View Live</a> 
             <a href="#" target="_blank">GitHub Repo</a> -->
         </div>
+
         <div class="project-card">
             <h3>DORA Laser Tracking Control System</h3>
             <p>
