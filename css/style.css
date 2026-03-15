@@ -416,6 +416,20 @@ body.inverted .projects-timeline::before {
     margin-bottom: 0;
 }
 
+.timeline-date {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #065f46;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    transition: color 0.5s ease;
+}
+
+body.inverted .timeline-date {
+    color: #b9fbc0;
+}
+
 .timeline-item::before {
     content: '';
     position: absolute;
@@ -591,9 +605,9 @@ body.inverted .project-link-outline:hover {
    ============================================================ */
 
 .about-container {
-    max-width: 1000px;
+    max-width: 860px;
     margin: auto;
-    padding: 20px;
+    padding: 48px 24px 60px;
     padding-top: 100px;
     font-family: 'Quicksand', sans-serif;
     position: relative;
@@ -604,29 +618,20 @@ body.inverted .project-link-outline:hover {
 
 body.inverted .about-container {
     background-color: #2e4e3f;
-    box-shadow: none;
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
-}
-
-.about-container img {
-    max-width: 100%;
-    height: auto;
 }
 
 .about-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 48px;
+    align-items: start;
     transition: opacity 0.5s ease, visibility 0.5s ease;
     padding-bottom: 40px;
 }
 
-@media (min-width: 850px) {
+@media (max-width: 700px) {
     .about-content {
-        flex-direction: row;
-        align-items: flex-start;
-        text-align: left;
+        grid-template-columns: 1fr;
     }
 }
 
@@ -636,48 +641,80 @@ body.inverted .about-container {
     pointer-events: none;
 }
 
+/* Left column */
+.about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .about-image img {
-    max-width: 300px;
-    height: auto;
-    border-radius: 15px;
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 16px;
     object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: block;
     border: 2px solid #d1fae5;
     transition: border-color 0.5s ease;
 }
 
-@media (max-width: 768px) {
-    .about-image img {
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-image img {
-        max-width: 250px;
-    }
-}
-
 body.inverted .about-image img {
-    border: 2px solid #065f46;
+    border-color: #065f46;
 }
 
-.about-text {
-    max-width: 600px;
-    text-align: center;
+.about-social-btns {
+    display: flex;
+    gap: 8px;
 }
 
-@media (min-width: 768px) {
-    .about-text {
-        text-align: left;
-    }
+.about-social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 8px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #b9fbc0;
+    transition: background 0.2s, color 0.5s ease;
+}
+
+.about-social-btn:hover {
+    background: #b9fbc0;
+}
+
+body.inverted .about-social-btn {
+    background: #065f46;
+    color: #d1fae5;
+    border-color: #3b8c6e;
+}
+
+body.inverted .about-social-btn:hover {
+    background: #0a7a5a;
+}
+
+/* Right column */
+.about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 4px;
 }
 
 .about-text h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
     color: #065f46;
+    line-height: 1.1;
+    margin-bottom: 16px;
     transition: color 0.5s ease;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
 }
 
 body.inverted .about-text h2 {
@@ -685,43 +722,121 @@ body.inverted .about-text h2 {
 }
 
 .about-text p {
+    font-size: 0.97rem;
     color: #3b5249;
+    line-height: 1.75;
+    margin-bottom: 10px;
     transition: color 0.5s ease;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
 }
 
 body.inverted .about-text p {
     color: #d1fae5;
 }
 
-.social-links {
-    margin-top: 30px;
-    display: flex;
-    gap: 30px;
-    justify-content: center;
+.about-divider {
+    height: 1px;
+    background: #d1fae5;
+    transition: background 0.5s ease;
 }
 
-@media (min-width: 768px) {
-    .social-links {
-        justify-content: flex-start;
-    }
+body.inverted .about-divider {
+    background: #065f46;
 }
 
-.social-links a {
-    font-size: 2.5rem;
-    text-decoration: none;
+.about-section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: #065f46;
+    margin-bottom: 12px;
     transition: color 0.5s ease;
 }
 
-body.inverted .social-links a {
-    color: #d1fae5;
+body.inverted .about-section-label {
+    color: #b9fbc0;
 }
 
-.social-links a:hover {
+.about-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.about-fact {
+    background: #d1fae5;
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: background 0.5s ease;
+}
+
+body.inverted .about-fact {
+    background: #065f46;
+}
+
+.about-fact-label {
+    font-size: 0.72rem;
+    color: #6b9e6b;
+    font-weight: 600;
+    margin-bottom: 3px;
+    transition: color 0.5s ease;
+}
+
+body.inverted .about-fact-label {
+    color: #b9fbc0;
+}
+
+.about-fact-value {
+    font-size: 0.88rem;
+    color: #2e4e3f;
+    font-weight: 600;
+    transition: color 0.5s ease;
+}
+
+body.inverted .about-fact-value {
+    color: #f0fdf4;
+}
+
+.about-fact-link {
+    color: #065f46;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+}
+
+.about-fact-link:hover {
     color: #2e7d32;
+}
+
+body.inverted .about-fact-link {
+    color: #b9fbc0;
+}
+
+body.inverted .about-fact-link:hover {
+    color: #f0fdf4;
+}
+
+.about-interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.about-interest {
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #f0fdf4;
+    color: #065f46;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid #b9fbc0;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.inverted .about-interest {
+    background: #2e4e3f;
+    color: #d1fae5;
+    border-color: #3b8c6e;
 }
 
 /* Toggle Button */
