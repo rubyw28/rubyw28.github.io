@@ -5,51 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Projects - Ruby Wu</title>
     <link rel="stylesheet" href="../css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
 </head>
 <body class="projects">
-    <div class="home-container">
-        <header>
-        <h1 class="logo">Ruby Wu</h1>
-        <nav>
-            <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../pages/projects.html">Projects</a></li>
-            <li><a href="../pages/about.html">About</a></li>
-            </ul>
-        </nav>
-        </header>
+    <header>
+        <span class="logo">
+            <span class="logo-leaf">🌿</span> Ruby Wu
+        </span>
+        <div class="nav-right">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../pages/projects.html">Projects</a></li>
+                    <li><a href="../pages/about.html">About</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" title="GitHub">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </a>
+                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" title="LinkedIn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
 
+    <div class="page-container">
         <section class="projects-section">
-        <h2>My Projects</h2>
-        <div class="project-card">
-            <h3>Autonomous Drawing Car</h3>
-            <img src="../images/drawing-car.png" alt="Autonomous Drawing Car" class="project-image">
-            <p>
-                An autonomous drawing car that turns mouse-drawn inputs displayed on a VGA GUI into real-world motion by wirelessly driving a robot car along digitally generated paths.
-                We built an autonomous drawing system using two Raspberry Pi Pico Ws that communicate over UDP. One Pico W interfaces with a PC, handling mouse input and VGA output to generate and display waypoints. These waypoints are transmitted wirelessly to a second Pico W mounted on a car. The car uses a 9-axis IMU to determine its orientation, computes PWM values, and drives its motors to reach each target point. The system supports two operating modes. In direct-follow mode, the car traces the path exactly as drawn. In optimized-route mode, the car calculates the shortest path through all points, improving efficiency while preserving the overall flow.
-            </p>
-            <a href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank">Video Demo</a> 
-            <a href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank">Project Website</a>
-        </div>
-        <div class="project-card">
-            <h3>DORA Laser Tracking Control System</h3>
-            <p>
-                 As a Software Engineering and Research Intern at NASA JPL, I developed a Python-based full-stack control system for the Deployable Optical Receiver Aperture (DORA), integrating MQTT communication and real-time telemetry to control precision laser tracking. I built RESTful APIs and an interactive React dashboard for live status monitoring, configuration editing, and command input. I also implemented Bit Error Rate (BER) analysis using NumPy and Pandas, and wrote integration tests to ensure reliable communication with embedded systems.
-            </p>
-        </div>
-        <div class="project-card">
-            <h3>Personal Portfolio Website</h3>
-            <p>
-                A portfolio built with HTML, JavaScript, and CSS. Includes a home page, projects showcase, and about page. (Also a small mini game, find where it is!)
-            </p>
-            <!-- <a href="#" target="_blank">View Live</a> 
-            <a href="#" target="_blank">GitHub Repo</a> -->
-        </div>
+            <h2>My Projects</h2>
 
-        
-        <!-- add more projects -->
+            <div class="project-card">
+                <h3>Autonomous Drawing Car</h3>
+                <img src="../images/drawing-car.png" alt="Autonomous Drawing Car" class="project-image">
+                <p>
+                    An autonomous drawing car that turns mouse-drawn inputs displayed on a VGA GUI into real-world motion by wirelessly driving a robot car along digitally generated paths.
+                    We built an autonomous drawing system using two Raspberry Pi Pico Ws that communicate over UDP. One Pico W interfaces with a PC, handling mouse input and VGA output to generate and display waypoints. These waypoints are transmitted wirelessly to a second Pico W mounted on a car. The car uses a 9-axis IMU to determine its orientation, computes PWM values, and drives its motors to reach each target point. The system supports two operating modes. In direct-follow mode, the car traces the path exactly as drawn. In optimized-route mode, the car calculates the shortest path through all points, improving efficiency while preserving the overall flow.
+                </p>
+                <a href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank">Video Demo</a>
+                <a href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank">Project Website</a>
+            </div>
+
+            <div class="project-card">
+                <h3>DORA Laser Tracking Control System</h3>
+                <p>
+                    As a Software Engineering and Research Intern at NASA JPL, I developed a Python-based full-stack control system for the Deployable Optical Receiver Aperture (DORA), integrating MQTT communication and real-time telemetry to control precision laser tracking. I built RESTful APIs and an interactive React dashboard for live status monitoring, configuration editing, and command input. I also implemented Bit Error Rate (BER) analysis using NumPy and Pandas, and wrote integration tests to ensure reliable communication with embedded systems.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Personal Portfolio Website</h3>
+                <p>
+                    A portfolio built with HTML, JavaScript, and CSS. Includes a home page, projects showcase, and about page. (Also a small mini game, find where it is!)
+                </p>
+            </div>
+
+            <!-- add more projects -->
         </section>
     </div>
+
+    <footer>
+        <span>Ruby Wu · 2025</span>
+        <div class="footer-links">
+            <a href="https://github.com/rubyw28" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
 </body>
 </html>
