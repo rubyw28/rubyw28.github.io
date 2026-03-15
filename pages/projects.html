@@ -41,39 +41,130 @@
 
     <div class="page-container">
         <section class="projects-section">
-            <h2>My Projects</h2>
+            <h2 class="projects-heading">My Projects</h2>
 
-            <div class="project-card">
-                <h3>Autonomous Drawing Car</h3>
-                <img src="../images/drawing-car.png" alt="Autonomous Drawing Car" class="project-image">
-                <p>
-                    An autonomous drawing car that turns mouse-drawn inputs displayed on a VGA GUI into real-world motion by wirelessly driving a robot car along digitally generated paths.
-                    We built an autonomous drawing system using two Raspberry Pi Pico Ws that communicate over UDP. One Pico W interfaces with a PC, handling mouse input and VGA output to generate and display waypoints. These waypoints are transmitted wirelessly to a second Pico W mounted on a car. The car uses a 9-axis IMU to determine its orientation, computes PWM values, and drives its motors to reach each target point. The system supports two operating modes. In direct-follow mode, the car traces the path exactly as drawn. In optimized-route mode, the car calculates the shortest path through all points, improving efficiency while preserving the overall flow.
-                </p>
-                <a href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank">Video Demo</a>
-                <a href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank">Project Website</a>
+            <div class="projects-timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2025</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">Autonomous Drawing Car</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">Raspberry Pi</span>
+                                    <span class="project-tag">UDP</span>
+                                    <span class="project-tag">Embedded</span>
+                                    <span class="project-tag">IMU</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Mouse-drawn paths turned into real-world robot motion via two Pico Ws communicating over UDP. Supports direct-follow and optimized-route modes.</p>
+                        </div>
+                        <img class="project-image" src="../images/drawing-car.png" alt="Autonomous Drawing Car">
+                        <div class="project-links">
+                            <a class="project-link-btn project-link-solid" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank">Video demo</a>
+                            <a class="project-link-btn project-link-outline" href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank">Project website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">May – Aug 2025</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">DORA Laser Tracking Control System</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">NASA JPL</span>
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">React</span>
+                                    <span class="project-tag">MQTT</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Full-stack control system for precision laser tracking at NASA JPL. Built RESTful APIs, a real-time React dashboard, and BER analysis with NumPy and Pandas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2025</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">Birdsong Synthesizer</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">RP2040</span>
+                                    <span class="project-tag">C</span>
+                                    <span class="project-tag">DDS</span>
+                                    <span class="project-tag">DSP</span>
+                                    <span class="project-tag">SPI</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Real-time audio synthesis in C using direct digital synthesis and fixed-point arithmetic under strict timing constraints. Block-based waveform generation with runtime parameter updates to eliminate audible artifacts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2024 – Present</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">CUAir ERP & Payload Firmware</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">React</span>
+                                    <span class="project-tag">FastAPI</span>
+                                    <span class="project-tag">C++</span>
+                                    <span class="project-tag">PCB Design</span>
+                                    <span class="project-tag">IMU</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Full-stack ERP features for Cornell's UAV team — React frontend, FastAPI + SQLite backend, and REST APIs with structured logging. Also owns core C++ firmware and custom PCBs for an autonomous aerial payload.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">May – Aug 2025</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">Interferometric Fiber-Optic Sensing System</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">NASA JPL</span>
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">Signal Processing</span>
+                                    <span class="project-tag">Optics</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Designed and validated a fiber-optic sensing system at NASA JPL. Defined evaluation metrics, characterized failure modes, and built a telemetry pipeline for near-real-time analysis. First author on a provisional patent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Ongoing</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">Personal Portfolio Website</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">HTML</span>
+                                    <span class="project-tag">CSS</span>
+                                    <span class="project-tag">JavaScript</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">This site! Built with a home page, projects showcase, and about page. (There's a hidden mini game somewhere, can you find it?)</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="project-card">
-                <h3>DORA Laser Tracking Control System</h3>
-                <p>
-                    As a Software Engineering and Research Intern at NASA JPL, I developed a Python-based full-stack control system for the Deployable Optical Receiver Aperture (DORA), integrating MQTT communication and real-time telemetry to control precision laser tracking. I built RESTful APIs and an interactive React dashboard for live status monitoring, configuration editing, and command input. I also implemented Bit Error Rate (BER) analysis using NumPy and Pandas, and wrote integration tests to ensure reliable communication with embedded systems.
-                </p>
-            </div>
-
-            <div class="project-card">
-                <h3>Personal Portfolio Website</h3>
-                <p>
-                    A portfolio built with HTML, JavaScript, and CSS. Includes a home page, projects showcase, and about page. (Also a small mini game, find where it is!)
-                </p>
-            </div>
-
-            <!-- add more projects -->
         </section>
     </div>
 
     <footer>
-        <span>Ruby Wu · 2025</span>
+        <span>Ruby Wu · 2026</span>
         <div class="footer-links">
             <a href="https://github.com/rubyw28" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank">LinkedIn</a>
