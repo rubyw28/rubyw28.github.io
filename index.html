@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruby Wu</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./favicon.svg">
+    <meta name="theme-color" content="#e8f5e9">
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,22 +15,25 @@
 <body>
 
     <header>
-        <span class="logo">
-            <span class="logo-leaf">🌿</span> Ruby Wu
-        </span>
+        <a href="./index.html" class="logo logo-link">
+            <span class="logo-leaf" aria-hidden="true">🌿</span> Ruby Wu
+        </a>
         <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="pages/projects.html">Projects</a></li>
-                <li><a href="pages/about.html">About</a></li>
-            </ul>
+            <nav aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a href="./index.html" aria-current="page">Home</a></li>
+                    <li><a href="pages/projects.html">Projects</a></li>
+                    <li><a href="pages/about.html">About</a></li>
+                </ul>
+            </nav>
             <div class="social-icons">
-                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" title="GitHub">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                     </svg>
                 </a>
-                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" title="LinkedIn">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                         <rect x="2" y="9" width="4" height="12"/>
                         <circle cx="4" cy="4" r="2"/>
@@ -37,57 +43,36 @@
         </div>
     </header>
 
-    <section class="hero" id="heroSection">
-        <div class="hero-inner">
-            <div>
-                <h1 id="heroH1">Hi!<br><em>I am Ruby</em></h1>
-                <p class="hero-sub">I'm currently studying Electrical and Computer Engineering at Cornell University.</p>
-                <div class="hero-cta">
-                    <a class="btn btn-primary" href="pages/projects.html">See my work</a>
-                    <a class="btn btn-ghost" href="pages/about.html">About me</a>
+    <main>
+        <section class="hero" id="heroSection">
+            <div class="hero-inner">
+                <div>
+                    <h1 id="heroH1">Hi!<br><em>I am Ruby</em></h1>
+                    <p class="hero-sub">I'm currently studying Electrical and Computer Engineering at Cornell University.</p>
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="pages/projects.html">See my work</a>
+                        <a class="btn btn-ghost" href="pages/about.html">About me</a>
+                    </div>
+                </div>
+                <div class="photo-wrap">
+                    <div class="photo-box">
+                        <img src="./images/ruby-nyc.jpg" alt="Photo of Ruby Wu" width="300" height="380" decoding="async">
+                    </div>
+                    <div class="photo-badge" aria-hidden="true">🍃</div>
                 </div>
             </div>
-            <div class="photo-wrap">
-                <div class="photo-box">
-                    <img src="./images/ruby-nyc.jpg" alt="Photo of Ruby Wu">
-                </div>
-                <div class="photo-badge">🍃</div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <span>Ruby Wu · 2026</span>
         <div class="footer-links">
-            <a href="https://github.com/rubyw28" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank">LinkedIn</a>
+            <a href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
     </footer>
 
-    <script>
-        (function () {
-            const hero = document.getElementById('heroSection');
-            const h1 = document.getElementById('heroH1');
-            const startBg = '#e8f5e9', endBg = '#b9fbc0';
-            const startTxt = '#065f46', endTxt = '#2e4e3f';
-
-            function lerp(c1, c2, t) {
-                return '#' + c1.slice(1).match(/.{2}/g).map((a, i) => {
-                    const b = parseInt(c2.slice(1).match(/.{2}/g)[i], 16);
-                    return ('0' + Math.round(parseInt(a, 16) + t * (b - parseInt(a, 16))).toString(16)).slice(-2);
-                }).join('');
-            }
-
-            function onScroll() {
-                const p = Math.min(window.scrollY / (hero.offsetHeight || 1), 1);
-                hero.style.backgroundColor = lerp(startBg, endBg, p);
-                h1.style.color = lerp(startTxt, endTxt, p);
-            }
-
-            window.addEventListener('scroll', onScroll);
-            onScroll();
-        })();
-    </script>
+    <script src="./js/script.js"></script>
 
 </body>
 </html>

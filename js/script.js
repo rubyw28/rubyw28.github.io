@@ -1,34 +1,49 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const heroSection = document.querySelector('.hero');
-    const h1Element = heroSection.querySelector('h1');
-    const scrollHint = heroSection.querySelector('.scroll-hint');
+(function () {
+    const hero = document.getElementById('heroSection');
+    const h1 = document.getElementById('heroH1');
+    if (!hero || !h1) return;
 
-    const startBgColor = '#e8f5e9'; 
-    const endBgColor = '#b9fbc0'; 
-    const startTextColor = '#065f46';
-    const endTextColor = '#2e4e3f';   
-
-    function interpolateColor(color1, color2, factor) {
-        const result = color1.slice(1).match(/.{2}/g).map((c1, i) => {
-            const c2 = parseInt(color2.slice(1).match(/.{2}/g)[i], 16);
-            const r = Math.round(parseInt(c1, 16) + factor * (c2 - parseInt(c1, 16)));
-            return ('0' + r.toString(16)).slice(-2);
-        }).join('');
-        return '#' + result;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
     }
 
-    function handleScroll() {
-        const scrollPosition = window.scrollY;
-        const heroHeight = heroSection.offsetHeight;
-        let scrollProgress = Math.min(scrollPosition / heroHeight, 1);
+    const startBg = '#e8f5e9';
+    const endBg = '#b9fbc0';
+    const startTxt = '#065f46';
+    const endTxt = '#2e4e3f';
 
-        const h1Progress = scrollProgress;
-
-        heroSection.style.backgroundColor = interpolateColor(startBgColor, endBgColor, scrollProgress);
-        h1Element.style.color = interpolateColor(startTextColor, endTextColor, h1Progress);
-        scrollHint.style.opacity = 1 - scrollProgress;
+    function lerpHex(c1, c2, t) {
+        return (
+            '#' +
+            c1
+                .slice(1)
+                .match(/.{2}/g)
+                .map((a, i) => {
+                    const b = parseInt(c2.slice(1).match(/.{2}/g)[i], 16);
+                    return (
+                        '0' +
+                        Math.round(parseInt(a, 16) + t * (b - parseInt(a, 16))).toString(16)
+                    ).slice(-2);
+                })
+                .join('')
+        );
     }
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-});
+    let ticking = false;
+    function updateHeroColors() {
+        const p = Math.min(window.scrollY / (hero.offsetHeight || 1), 1);
+        hero.style.backgroundColor = lerpHex(startBg, endBg, p);
+        h1.style.color = lerpHex(startTxt, endTxt, p);
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateHeroColors);
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateHeroColors();
+})();

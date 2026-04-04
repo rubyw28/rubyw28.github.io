@@ -16,6 +16,19 @@ body {
     overflow-x: hidden;
 }
 
+:focus-visible {
+    outline: 2px solid #065f46;
+    outline-offset: 2px;
+}
+
+body.inverted :focus-visible {
+    outline-color: #b9fbc0;
+}
+
+.icon-btn:focus-visible {
+    outline-offset: 3px;
+}
+
 /* Dark mode styles for body */
 body.inverted {
     background-color: #2e4e3f;
@@ -54,6 +67,19 @@ header .logo {
     align-items: center;
     gap: 6px;
     transition: color 0.5s ease;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-link:hover {
+    color: #065f46;
+}
+
+body.inverted .logo-link:hover {
+    color: #b9fbc0;
 }
 
 body.inverted header .logo {
@@ -97,6 +123,16 @@ body.inverted .nav-links a {
 }
 
 body.inverted .nav-links a:hover {
+    background-color: #065f46;
+    color: #f0fdf4;
+}
+
+.nav-links a[aria-current="page"] {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+body.inverted .nav-links a[aria-current="page"] {
     background-color: #065f46;
     color: #f0fdf4;
 }
@@ -860,8 +896,8 @@ body.inverted .about-interest {
     padding: 0;
 }
 
-.toggle-about-button .fas {
-    font-size: 2rem;
+.toggle-about-button svg {
+    display: block;
 }
 
 body.inverted .toggle-about-button {
@@ -1015,4 +1051,25 @@ body.game-active {
 @keyframes leafSway {
     0%, 100% { transform: rotate(-5deg); }
     50% { transform: rotate(5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body {
+        animation: none;
+        opacity: 1;
+    }
+
+    .hero h1,
+    .hero-sub,
+    .hero-cta,
+    .photo-wrap {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .logo-leaf,
+    .photo-badge {
+        animation: none;
+    }
 }

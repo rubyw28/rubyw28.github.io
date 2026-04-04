@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Projects - Ruby Wu</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../favicon.svg">
+    <meta name="theme-color" content="#e8f5e9">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,25 +14,25 @@
 </head>
 <body class="projects">
     <header>
-        <span class="logo">
-            <span class="logo-leaf">🌿</span> Ruby Wu
-        </span>
+        <a href="../index.html" class="logo logo-link">
+            <span class="logo-leaf" aria-hidden="true">🌿</span> Ruby Wu
+        </a>
         <div class="nav-right">
-            <nav>
+            <nav aria-label="Primary">
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
-                    <li><a href="../pages/projects.html">Projects</a></li>
+                    <li><a href="../pages/projects.html" aria-current="page">Projects</a></li>
                     <li><a href="../pages/about.html">About</a></li>
                 </ul>
             </nav>
             <div class="social-icons">
-                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" title="GitHub">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer" title="GitHub">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                     </svg>
                 </a>
-                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" title="LinkedIn">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                         <rect x="2" y="9" width="4" height="12"/>
                         <circle cx="4" cy="4" r="2"/>
@@ -40,6 +43,7 @@
     </header>
 
     <div class="page-container">
+        <main>
         <section class="projects-section">
             <h2 class="projects-heading">My Projects</h2>
 
@@ -60,10 +64,10 @@
                             </div>
                             <p class="project-desc">Mouse-drawn paths turned into real-world robot motion via two Pico Ws communicating over UDP. Supports direct-follow and optimized-route modes.</p>
                         </div>
-                        <img class="project-image" src="../images/drawing-car.png" alt="Autonomous Drawing Car">
+                        <img class="project-image" src="../images/drawing-car.png" alt="Autonomous Drawing Car" loading="lazy" decoding="async">
                         <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank">Video demo</a>
-                            <a class="project-link-btn project-link-outline" href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank">Project website</a>
+                            <a class="project-link-btn project-link-solid" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer">Video demo</a>
+                            <a class="project-link-btn project-link-outline" href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank" rel="noopener noreferrer">Project website</a>
                         </div>
                     </div>
                 </div>
@@ -122,7 +126,7 @@
                             <p class="project-desc">Full-stack ERP features for CUAir: React frontend, FastAPI + SQLite backend, and REST APIs with structured logging. Also owns core C++ firmware and custom PCBs for an autonomous aerial payload.</p>
                         </div>
                         <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank">Visit CUAir Website</a>
+                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">Visit CUAir Website</a>
                         </div>
                     </div>
                 </div>
@@ -164,13 +168,14 @@
 
             </div>
         </section>
+        </main>
     </div>
 
     <footer>
         <span>Ruby Wu · 2026</span>
         <div class="footer-links">
-            <a href="https://github.com/rubyw28" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank">LinkedIn</a>
+            <a href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
     </footer>
 </body>
