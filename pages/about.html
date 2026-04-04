@@ -13,6 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
 </head>
 <body class="about">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <header>
         <a href="../index.html" class="logo logo-link">
             <span class="logo-leaf" aria-hidden="true">🌿</span> Ruby Wu
@@ -23,6 +25,7 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../pages/projects.html">Projects</a></li>
                     <li><a href="../pages/about.html" aria-current="page">About</a></li>
+                    <li><a href="about.html#mini-golf">Golf</a></li>
                 </ul>
             </nav>
             <div class="social-icons">
@@ -43,7 +46,7 @@
     </header>
 
     <div class="about-container">
-        <main class="about-main">
+        <main class="about-main" id="main-content">
         <section class="about-content">
 
             <div class="about-left">
@@ -101,13 +104,14 @@
                         <span class="about-interest">✂️ Crafting</span>
                         <span class="about-interest">🍜 Food</span>
                         <span class="about-interest">🗺️ Exploring</span>
+                        <a href="#mini-golf" class="about-interest about-interest-link" id="aboutPlayBanner">⛳ Mini golf</a>
                     </div>
                 </div>
             </div>
 
         </section>
 
-        <button type="button" id="toggle-about-button" class="toggle-about-button" aria-label="Learn more about Ruby">
+        <button type="button" id="toggle-about-button" class="toggle-about-button" aria-label="Show mini golf">
             <svg class="toggle-about-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
                 <path d="M9 18h6"/>
@@ -115,7 +119,7 @@
             </svg>
         </button>
 
-        <section class="more-about-content hidden">
+        <section class="more-about-content hidden" id="mini-golf">
             <div class="more-about-text">
                 <div class="canvas-container">
                     <canvas id="miniGolfCanvas" width="500" height="500"></canvas>
@@ -125,7 +129,16 @@
         </main>
     </div>
 
-    <script src="../js/about.js"></script>
+    <footer>
+        <span>Ruby Wu · 2026</span>
+        <div class="footer-links">
+            <a href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script src="../js/header-height.js"></script>
     <script src="../js/mini-golf-game.js"></script>
+    <script src="../js/about.js"></script>
 </body>
 </html>

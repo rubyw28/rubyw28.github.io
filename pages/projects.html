@@ -11,8 +11,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+    <noscript>
+        <style>
+            .projects-section .projects-heading,
+            .projects-section .timeline-item { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 </head>
 <body class="projects">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <header>
         <a href="../index.html" class="logo logo-link">
             <span class="logo-leaf" aria-hidden="true">🌿</span> Ruby Wu
@@ -23,6 +31,7 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../pages/projects.html" aria-current="page">Projects</a></li>
                     <li><a href="../pages/about.html">About</a></li>
+                    <li><a href="../pages/about.html#mini-golf">Golf</a></li>
                 </ul>
             </nav>
             <div class="social-icons">
@@ -43,7 +52,7 @@
     </header>
 
     <div class="page-container">
-        <main>
+        <main id="main-content">
         <section class="projects-section">
             <h2 class="projects-heading">My Projects</h2>
 
@@ -178,5 +187,7 @@
             <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
     </footer>
+    <script src="../js/header-height.js"></script>
+    <script src="../js/projects-scroll.js" defer></script>
 </body>
 </html>

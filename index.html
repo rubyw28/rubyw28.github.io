@@ -13,17 +13,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header>
-        <a href="./index.html" class="logo logo-link">
-            <span class="logo-leaf" aria-hidden="true">🌿</span> Ruby Wu
-        </a>
+        <div class="logo-cluster">
+            <button type="button" class="logo-leaf logo-leaf-btn" id="logoLeafBtn" aria-label="Site easter egg">🌿</button>
+            <a href="./index.html" class="logo-link logo-text">Ruby Wu</a>
+        </div>
         <div class="nav-right">
             <nav aria-label="Primary">
                 <ul class="nav-links">
                     <li><a href="./index.html" aria-current="page">Home</a></li>
                     <li><a href="pages/projects.html">Projects</a></li>
                     <li><a href="pages/about.html">About</a></li>
+                    <li><a href="pages/about.html#mini-golf">Golf</a></li>
                 </ul>
             </nav>
             <div class="social-icons">
@@ -43,36 +46,40 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero" id="heroSection">
             <div class="hero-inner">
                 <div>
                     <h1 id="heroH1">Hi!<br><em>I am Ruby</em></h1>
+                    <p class="hero-greeting" id="heroGreeting" aria-live="polite"></p>
                     <p class="hero-sub">I'm currently studying Electrical and Computer Engineering at Cornell University.</p>
                     <div class="hero-cta">
                         <a class="btn btn-primary" href="pages/projects.html">See my work</a>
                         <a class="btn btn-ghost" href="pages/about.html">About me</a>
+                        <a class="btn btn-ghost" href="pages/about.html#mini-golf">Mini golf</a>
                     </div>
                 </div>
                 <div class="photo-wrap">
                     <div class="photo-box">
                         <img src="./images/ruby-nyc.jpg" alt="Photo of Ruby Wu" width="300" height="380" decoding="async">
                     </div>
-                    <div class="photo-badge" aria-hidden="true">🍃</div>
+                    <button type="button" class="photo-badge" id="photoBadgeBtn" aria-label="Spin leaf badge">🍃</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <span>Ruby Wu · 2026</span>
+        <span class="footer-signature" id="footerSignature" title="Ruby Wu · 2026">Ruby Wu · 2026</span>
         <div class="footer-links">
             <a href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
     </footer>
 
+    <script src="./js/header-height.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/playful.js"></script>
 
 </body>
 </html>
