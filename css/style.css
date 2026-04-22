@@ -1014,16 +1014,129 @@ body.inverted .project-desc {
 /* Project image */
 .project-image {
     width: 100%;
-    max-height: 220px;
-    object-fit: cover;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
     object-position: center;
     display: block;
     border-top: 1px solid #b9fbc0;
     transition: border-color 0.5s ease;
+    background: #f0fdf4;
+    cursor: zoom-in;
 }
 
 body.inverted .project-image {
     border-color: #3b8c6e;
+}
+
+.project-image-contain {
+    max-height: none;
+}
+
+body.inverted .project-image-contain {
+    background: #044b39;
+}
+
+body.inverted .project-image {
+    background: #044b39;
+}
+
+.project-image-placeholder {
+    width: 100%;
+    min-height: 180px;
+    border-top: 1px solid #b9fbc0;
+    border-bottom: 1px solid #b9fbc0;
+    background: linear-gradient(135deg, rgba(185, 251, 192, 0.35), rgba(209, 250, 229, 0.75));
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 16px;
+}
+
+.project-image-placeholder span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #065f46;
+}
+
+body.inverted .project-image-placeholder {
+    border-top-color: #3b8c6e;
+    border-bottom-color: #3b8c6e;
+    background: linear-gradient(135deg, rgba(6, 95, 70, 0.55), rgba(4, 75, 57, 0.9));
+}
+
+body.inverted .project-image-placeholder span {
+    color: #d1fae5;
+}
+
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 20, 14, 0.82);
+    z-index: 3000;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.image-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.image-lightbox-img {
+    max-width: min(1100px, 96vw);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid rgba(209, 250, 229, 0.45);
+    background: #f0fdf4;
+}
+
+.image-lightbox-close {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(209, 250, 229, 0.5);
+    border-radius: 50%;
+    background: rgba(4, 75, 57, 0.95);
+    color: #f0fdf4;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.image-lightbox-toggle {
+    position: fixed;
+    top: 18px;
+    right: 70px;
+    min-height: 42px;
+    padding: 9px 14px;
+    border: 1.5px solid rgba(209, 250, 229, 0.7);
+    border-radius: 999px;
+    background: rgba(4, 75, 57, 0.95);
+    color: #f0fdf4;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@media (max-width: 560px) {
+    .image-lightbox-toggle {
+        right: 16px;
+        top: 70px;
+    }
 }
 
 /* Project links bar */

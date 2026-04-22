@@ -59,6 +59,30 @@
             <div class="projects-timeline">
 
                 <div class="timeline-item">
+                    <div class="timeline-date">Apr 2026</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">CUAir Airdrop V4 PCB + Firmware</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">PCB Design</span>
+                                    <span class="project-tag">ATmega328P</span>
+                                    <span class="project-tag">Pixhawk Lua</span>
+                                    <span class="project-tag">UART</span>
+                                    <span class="project-tag">Systems Test</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Redesigned CUAir's airdrop control board for the 2026 SUAS mission update: dual-payload release, nichrome-wire cut mechanism, servo-controlled sequencing, and abort-safe behavior. Built and validated end-to-end Pixhawk-to-board communication with reliable drop/abort state transitions.</p>
+                        </div>
+                        <img id="pcb-v4-image" class="project-image project-image-contain project-image-pcb" src="../images/airdrop_v4_pcb_layout.png" data-default-src="../images/airdrop_v4_pcb_layout.png" data-alt-src="../images/airdrop_v4_pcb_layout2d.png" alt="CUAir Airdrop V4 PCB layout" loading="lazy" decoding="async">
+                        <div class="project-links">
+                            <a class="project-link-btn project-link-outline" href="https://robonation.gitbook.io/suas-resources/2026-team-handbook/section-3-mission-demonstration/3.6-search-detect-and-deliver" target="_blank" rel="noopener noreferrer">2026 SUAS rules</a>
+                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-v4-image">Show 2D View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
                     <div class="timeline-date">Dec 2025</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -73,10 +97,53 @@
                             </div>
                             <p class="project-desc">Mouse-drawn paths turned into real-world robot motion via two Pico Ws communicating over UDP. Supports direct-follow and optimized-route modes.</p>
                         </div>
-                        <img class="project-image" src="../images/drawing-car.png" alt="Autonomous Drawing Car" loading="lazy" decoding="async">
+                        <img class="project-image project-image-contain" src="../images/drawing-car.png" alt="Autonomous Drawing Car" loading="lazy" decoding="async">
                         <div class="project-links">
                             <a class="project-link-btn project-link-solid" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer">Video demo</a>
                             <a class="project-link-btn project-link-outline" href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank" rel="noopener noreferrer">Project website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2025</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">CUAir Airdrop Sensor PCB</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">PCB Design</span>
+                                    <span class="project-tag">I2C</span>
+                                    <span class="project-tag">BNO055</span>
+                                    <span class="project-tag">IMU Fusion</span>
+                                    <span class="project-tag">Hardware Bring-up</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Designed a sensor board that verifies each airdrop step and reports status to the airdrop controller over I2C. Implemented dual-IMU door-state detection, servo potentiometer feedback for pin-removal tracking, and debugged early power integrity issues by reworking grounding for stable operation.</p>
+                        </div>
+                        <img id="pcb-sensor-image" class="project-image project-image-contain project-image-pcb" src="../images/airdrop_sensor.png" data-default-src="../images/airdrop_sensor.png" data-alt-src="../images/airdrop_sensor2d.png" alt="CUAir Airdrop Sensor PCB layout" loading="lazy" decoding="async">
+                        <div class="project-links">
+                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir</a>
+                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-sensor-image">Show 2D View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2025</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">Birdsong Synthesizer</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">RP2040</span>
+                                    <span class="project-tag">C</span>
+                                    <span class="project-tag">DDS</span>
+                                    <span class="project-tag">DSP</span>
+                                    <span class="project-tag">SPI</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">Real-time audio synthesis in C using direct digital synthesis and fixed-point arithmetic under strict timing constraints. Block-based waveform generation with runtime parameter updates to eliminate audible artifacts.</p>
                         </div>
                     </div>
                 </div>
@@ -100,20 +167,19 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-date">Aug 2025</div>
+                    <div class="timeline-date">May – Aug 2025</div>
                     <div class="project-card">
                         <div class="project-card-body">
                             <div class="project-meta">
-                                <span class="project-title">Birdsong Synthesizer</span>
+                                <span class="project-title">Interferometric Fiber-Optic Sensing System</span>
                                 <div class="project-tags">
-                                    <span class="project-tag">RP2040</span>
-                                    <span class="project-tag">C</span>
-                                    <span class="project-tag">DDS</span>
-                                    <span class="project-tag">DSP</span>
-                                    <span class="project-tag">SPI</span>
+                                    <span class="project-tag">NASA JPL</span>
+                                    <span class="project-tag">Python</span>
+                                    <span class="project-tag">Signal Processing</span>
+                                    <span class="project-tag">Optics</span>
                                 </div>
                             </div>
-                            <p class="project-desc">Real-time audio synthesis in C using direct digital synthesis and fixed-point arithmetic under strict timing constraints. Block-based waveform generation with runtime parameter updates to eliminate audible artifacts.</p>
+                            <p class="project-desc">Designed and validated a fiber-optic sensing system at NASA JPL. Defined evaluation metrics, characterized failure modes, and built a telemetry pipeline for near-real-time analysis. First author on a provisional patent “Interferometric Fiber-Optic Systems and Methods for Detecting Reflected Acoustic Signals”.</p>
                         </div>
                     </div>
                 </div>
@@ -141,24 +207,6 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-date">May – Aug 2025</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">Interferometric Fiber-Optic Sensing System</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">NASA JPL</span>
-                                    <span class="project-tag">Python</span>
-                                    <span class="project-tag">Signal Processing</span>
-                                    <span class="project-tag">Optics</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Designed and validated a fiber-optic sensing system at NASA JPL. Defined evaluation metrics, characterized failure modes, and built a telemetry pipeline for near-real-time analysis. First author on a provisional patent “Interferometric Fiber-Optic Systems and Methods for Detecting Reflected Acoustic Signals”.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
                     <div class="timeline-date">Ongoing</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -178,6 +226,12 @@
             </div>
         </section>
         </main>
+    </div>
+
+    <div class="image-lightbox" aria-hidden="true" role="dialog" aria-label="Expanded project image">
+        <button class="image-lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
+        <button class="image-lightbox-toggle" type="button" hidden>Show 2D View</button>
+        <img class="image-lightbox-img" src="" alt="">
     </div>
 
     <footer>
