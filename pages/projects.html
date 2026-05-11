@@ -56,9 +56,39 @@
         <section class="projects-section">
             <h2 class="projects-heading">My Projects</h2>
 
+            <div class="project-filters" role="group" aria-label="Filter projects by category">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="embedded">Embedded</button>
+                <button class="filter-btn" data-filter="software">Software</button>
+            </div>
+
             <div class="projects-timeline">
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="embedded">
+                    <div class="timeline-date">May 2026</div>
+                    <div class="project-card">
+                        <div class="project-card-body">
+                            <div class="project-meta">
+                                <span class="project-title">Flipper Zero Clone</span>
+                                <div class="project-tags">
+                                    <span class="project-tag">RFID/NFC</span>
+                                    <span class="project-tag">Infrared</span>
+                                    <span class="project-tag">FRDM-KL46Z</span>
+                                    <span class="project-tag">SPI</span>
+                                    <span class="project-tag">Embedded</span>
+                                </div>
+                            </div>
+                            <p class="project-desc">A pocket signal emulator inspired by Flipper Zero, built on the FRDM-KL46Z board. Captures and transmits RFID/NFC and infrared signals using a PN532 module and custom IR circuitry. Successfully cloned NFC tags and controlled TVs operating on the 38KHz band.</p>
+                        </div>
+                        <img class="project-image project-image-contain" src="../images/tiny_flipper.png" alt="Flipper Zero Clone device" loading="lazy" decoding="async">
+                        <div class="project-links">
+                            <a class="project-link-btn project-link-solid" href="https://www.youtube.com/watch?v=TvhQ8KdWxnI" target="_blank" rel="noopener noreferrer">Video demo</a>
+                            <a class="project-link-btn project-link-outline" href="https://pages.github.coecis.cornell.edu/ece3140-spr2026/aas396-jmf445-rcw253/" target="_blank" rel="noopener noreferrer">Project website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-category="embedded">
                     <div class="timeline-date">Apr 2026</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -82,7 +112,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="embedded">
                     <div class="timeline-date">Dec 2025</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -105,7 +135,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="embedded">
                     <div class="timeline-date">Dec 2025</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -129,7 +159,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="embedded">
                     <div class="timeline-date">Aug 2025</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -148,7 +178,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="software">
                     <div class="timeline-date">May – Aug 2025</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -166,7 +196,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="software">
                     <div class="timeline-date">May – Aug 2025</div>
                     <div class="project-card">
                         <div class="project-card-body">
@@ -184,21 +214,21 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="software">
                     <div class="timeline-date">Dec 2024 – Present</div>
                     <div class="project-card">
                         <div class="project-card-body">
                             <div class="project-meta">
-                                <span class="project-title">CUAir ERP & Payload Firmware</span>
+                                <span class="project-title">CUAir ERP</span>
                                 <div class="project-tags">
                                     <span class="project-tag">React</span>
                                     <span class="project-tag">FastAPI</span>
-                                    <span class="project-tag">C++</span>
-                                    <span class="project-tag">PCB Design</span>
-                                    <span class="project-tag">IMU</span>
+                                    <span class="project-tag">SQLite</span>
+                                    <span class="project-tag">REST APIs</span>
+                                    <span class="project-tag">Structured Logging</span>
                                 </div>
                             </div>
-                            <p class="project-desc">Full-stack ERP features for CUAir: React frontend, FastAPI + SQLite backend, and REST APIs with structured logging. Also owns core C++ firmware and custom PCBs for an autonomous aerial payload.</p>
+                            <p class="project-desc">Full-stack ERP features for CUAir: React frontend, FastAPI + SQLite backend, and REST APIs with structured logging.</p>
                         </div>
                         <div class="project-links">
                             <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">Visit CUAir Website</a>
@@ -206,7 +236,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-category="software">
                     <div class="timeline-date">Ongoing</div>
                     <div class="project-card">
                         <div class="project-card-body">

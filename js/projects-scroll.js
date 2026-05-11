@@ -141,4 +141,31 @@
             closeLightbox();
         }
     });
+
+    // Project category filtering
+    const filterContainer = document.querySelector('.project-filters');
+    const filterBtns = filterContainer?.querySelectorAll('.filter-btn');
+    const timelineItems = section.querySelectorAll('.timeline-item');
+
+    if (filterBtns && timelineItems.length) {
+        filterBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+
+                // Update active button
+                filterBtns.forEach((b) => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Filter items
+                timelineItems.forEach((item) => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.classList.remove('filtered-out');
+                    } else {
+                        item.classList.add('filtered-out');
+                    }
+                });
+            });
+        });
+    }
 })();

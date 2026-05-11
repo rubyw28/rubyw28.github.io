@@ -848,6 +848,64 @@ body.inverted .projects-heading {
     border-bottom-color: rgba(6, 95, 70, 0.6);
 }
 
+/* Project filters */
+.project-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(24px, 4vw, 36px);
+}
+
+.filter-btn {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    min-height: 42px;
+    border-radius: 999px;
+    border: 1.5px solid #b9fbc0;
+    background: transparent;
+    color: #065f46;
+    cursor: pointer;
+    transition: background-color 0.2s var(--ease-out), color 0.2s, border-color 0.2s, transform 0.15s ease;
+}
+
+.filter-btn:hover {
+    background: #d1fae5;
+    border-color: #86efac;
+}
+
+.filter-btn.active {
+    background: #065f46;
+    color: #f0fdf4;
+    border-color: #065f46;
+}
+
+.filter-btn:active {
+    transform: translateY(1px);
+}
+
+body.inverted .filter-btn {
+    border-color: #3b8c6e;
+    color: #d1fae5;
+}
+
+body.inverted .filter-btn:hover {
+    background: #065f46;
+    border-color: #065f46;
+}
+
+body.inverted .filter-btn.active {
+    background: #d1fae5;
+    color: #065f46;
+    border-color: #d1fae5;
+}
+
+/* Filtered out items */
+.timeline-item.filtered-out {
+    display: none;
+}
+
 /* Timeline spine */
 .projects-timeline {
     position: relative;
