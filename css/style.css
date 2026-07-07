@@ -1559,6 +1559,10 @@ body.inverted .about-fact-link:hover {
     color: var(--accent-hover);
 }
 
+.about-fact-wide {
+    grid-column: 1 / -1;
+}
+
 .about-interests {
     display: flex;
     flex-wrap: wrap;
@@ -1773,6 +1777,149 @@ body.game-active {
 @keyframes leafSway {
     0%, 100% { transform: rotate(-5deg); }
     50% { transform: rotate(5deg); }
+}
+
+/* Single-page layout styles */
+.single-page .hero {
+    min-height: 100vh;
+}
+
+.section-heading {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+}
+
+/* About Section (single-page) */
+.about-section {
+    padding: 5rem 1.5rem;
+    background: var(--bg-secondary);
+}
+
+.about-section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.about-text-block p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.about-facts-block .about-facts {
+    margin-bottom: 1.5rem;
+}
+
+.about-facts-block .about-interests {
+    justify-content: flex-start;
+}
+
+@media (max-width: 700px) {
+    .about-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Experience Section */
+.experience-section {
+    padding: 5rem 1.5rem;
+    background: var(--bg-primary);
+}
+
+.experience-section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.experience-item {
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.experience-company {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+.experience-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.experience-role {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.experience-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Mini Golf Section */
+.mini-golf-section {
+    padding: 5rem 1.5rem;
+    background: var(--bg-secondary);
+    text-align: center;
+}
+
+.mini-golf-intro {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.mini-golf-section .canvas-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Single-page projects section adjustments */
+.single-page .projects-section {
+    padding: 5rem 1.5rem;
+    background: var(--bg-primary);
+}
+
+.single-page .projects-heading {
+    text-align: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
