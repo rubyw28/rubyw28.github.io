@@ -26,10 +26,15 @@
 
     <header>
         <div class="logo-cluster">
-            <button type="button" class="logo-leaf logo-leaf-btn" id="logoLeafBtn" aria-label="Site easter egg"></button>
             <a href="#" class="logo-link logo-text">Ruby Wu</a>
         </div>
         <div class="nav-right">
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-collapse" id="primaryNav">
             <nav aria-label="Primary">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -63,6 +68,7 @@
                         <line x1="17" y1="7" x2="22" y2="7"/>
                     </svg>
                 </a>
+            </div>
             </div>
         </div>
     </header>
@@ -375,6 +381,7 @@
         </div>
     </footer>
 
+    <script src="./js/nav-menu.js"></script>
     <script src="./js/header-height.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/playful.js"></script>

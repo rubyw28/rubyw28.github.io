@@ -85,51 +85,6 @@
             greetingEl.textContent = options[Math.floor(Math.random() * options.length)];
         }
 
-        var leafBtn = document.getElementById('logoLeafBtn');
-        if (leafBtn) {
-            var count = 0;
-            var resetTimer = null;
-
-            function bump() {
-                clearTimeout(resetTimer);
-                count += 1;
-                resetTimer = setTimeout(function () {
-                    count = 0;
-                }, 2200);
-
-                if (count < 5) {
-                    if (!reduceMotion) {
-                        leafBtn.classList.remove('logo-leaf--wiggle');
-                        void leafBtn.offsetWidth;
-                        leafBtn.classList.add('logo-leaf--wiggle');
-                    }
-                    return;
-                }
-
-                count = 0;
-                if (!reduceMotion) {
-                    leafBtn.classList.remove('logo-leaf--celebrate');
-                    void leafBtn.offsetWidth;
-                    leafBtn.classList.add('logo-leaf--celebrate');
-                    setTimeout(function () {
-                        leafBtn.classList.remove('logo-leaf--celebrate');
-                    }, 900);
-                }
-                showToast('Leafy high-five! Use Play in the nav or About for mini golf.');
-            }
-
-            leafBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                bump();
-            });
-            leafBtn.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    bump();
-                }
-            });
-        }
-
         var photoBadge = document.getElementById('photoBadgeBtn');
         if (photoBadge) {
             var quips = ['Hm.', 'Still just a leaf.', 'Okay.'];
