@@ -318,6 +318,11 @@ body.konami-party .hero {
     white-space: nowrap;
 }
 
+body.inverted .nav-collapse {
+    background: var(--bg-warm);
+    border-color: var(--border-subtle);
+}
+
 body.inverted .nav-links a {
     color: var(--text-secondary);
 }
@@ -728,67 +733,9 @@ body.inverted .photo-badge {
         flex-shrink: 0;
     }
 
-    .nav-toggle {
-        display: flex;
-    }
-
-    .nav-right {
-        flex: 0 0 auto;
-        min-width: 0;
-        margin-left: auto;
-    }
-
     .nav-collapse {
-        position: absolute;
-        top: calc(100% + 8px);
         right: max(12px, env(safe-area-inset-right, 0px));
-        flex-direction: column;
-        align-items: stretch;
-        gap: 6px;
         min-width: 200px;
-        max-width: min(78vw, 320px);
-        padding: 10px;
-        background: var(--bg-main);
-        border: 1px solid var(--border-subtle);
-        border-radius: 14px;
-        box-shadow: var(--shadow-card-hover);
-        opacity: 0;
-        transform: translateY(-8px);
-        pointer-events: none;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .nav-collapse.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 2px;
-        width: 100%;
-    }
-
-    .nav-links a {
-        padding: 12px 14px;
-        min-height: 44px;
-        font-size: 0.95rem;
-        border-radius: 8px;
-        white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-        background: var(--accent-light);
-    }
-
-    .social-icons {
-        justify-content: flex-start;
-        gap: 8px;
-        padding-top: 10px;
-        margin-top: 4px;
-        border-top: 1px solid var(--border-subtle);
     }
 
     .icon-btn {
