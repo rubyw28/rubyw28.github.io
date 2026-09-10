@@ -7,10 +7,16 @@
         return;
     }
 
-    const startBg = '#e8f5e9';
-    const endBg = '#b9fbc0';
-    const startTxt = '#065f46';
-    const endTxt = '#2e4e3f';
+    const styles = getComputedStyle(document.documentElement);
+    function token(name, fallback) {
+        const value = styles.getPropertyValue(name).trim();
+        return /^#[0-9a-f]{6}$/i.test(value) ? value : fallback;
+    }
+
+    const startBg = token('--bg-hero', '#e8f5e9');
+    const endBg = token('--bg-hero-scrolled', '#b9fbc0');
+    const startTxt = token('--accent', '#2d5a45');
+    const endTxt = token('--accent-hover', '#1e3d2f');
 
     function lerpHex(c1, c2, t) {
         return (

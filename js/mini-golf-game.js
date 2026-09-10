@@ -85,7 +85,13 @@ function resetPositions() {
 // Function to resize the canvas to fit the screen
 function resizeCanvas() {
     const baseSize = 600;
-    let newSize = Math.min(window.innerWidth * 0.8, window.innerHeight * 0.8, baseSize);
+    const available = canvas.parentElement.clientWidth;
+    let newSize = Math.floor(Math.min(available, window.innerWidth * 0.8, window.innerHeight * 0.8, baseSize));
+
+    // Mobile browsers fire resize when the address bar slides; only reset the course when the size really changes.
+    if (newSize === canvas.width && gameBoundaryRadius !== undefined) {
+        return;
+    }
 
     canvas.width = newSize;
     canvas.height = newSize;
@@ -160,8 +166,9 @@ function drawCourse() {
     }
 
     // Display messages based on gameStatus
+    // Message colors keep at least 4.5:1 contrast against the green.
     if (gameStatus === "won") {
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "#1a1a1a";
         ctx.textAlign = "center";
 
         ctx.font = "bold 20px 'Quicksand', sans-serif";
@@ -173,7 +180,7 @@ function drawCourse() {
         ctx.font = "bold 15px 'Quicksand', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
     } else if (gameStatus === "lost_streak") {
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "#6e1111";
         ctx.textAlign = "center";
 
         ctx.font = "bold 20px 'Quicksand', sans-serif";
@@ -185,7 +192,7 @@ function drawCourse() {
         ctx.font = "bold 15px 'Quicksand', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
     } else if (gameStatus === "out_of_bounds") {
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "#6e1111";
         ctx.textAlign = "center";
 
         ctx.font = "bold 20px 'Quicksand', sans-serif";

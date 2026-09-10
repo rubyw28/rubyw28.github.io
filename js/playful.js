@@ -1,5 +1,5 @@
 /**
- * Home page micro-interactions: greeting, logo leaf, photo leaf, Konami, footer.
+ * Home page micro-interactions: greeting, Konami, footer.
  */
 (function () {
     function showToast(message) {
@@ -83,19 +83,6 @@
             };
             var options = lines[bucket];
             greetingEl.textContent = options[Math.floor(Math.random() * options.length)];
-        }
-
-        var photoBadge = document.getElementById('photoBadgeBtn');
-        if (photoBadge) {
-            var quips = ['Hm.', 'Still just a leaf.', 'Okay.'];
-            photoBadge.addEventListener('click', function () {
-                if (!reduceMotion) {
-                    photoBadge.classList.remove('photo-badge--spin');
-                    void photoBadge.offsetWidth;
-                    photoBadge.classList.add('photo-badge--spin');
-                }
-                showToast(quips[Math.floor(Math.random() * quips.length)]);
-            });
         }
 
         var footerSig = document.getElementById('footerSignature');

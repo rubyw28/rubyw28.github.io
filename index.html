@@ -11,17 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <style>
-        html { scroll-behavior: smooth; }
-    </style>
     <noscript>
         <style>
-            .projects-section .projects-heading,
             .projects-section .timeline-item { opacity: 1 !important; transform: none !important; }
         </style>
     </noscript>
 </head>
-<body class="single-page">
+<body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header>
@@ -40,23 +36,23 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#mini-golf">Golf</a></li>
+                    <li><a href="#mini-golf">Mini golf</a></li>
                 </ul>
             </nav>
             <div class="social-icons">
-                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer" title="GitHub">
+                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                     </svg>
                 </a>
-                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                         <rect x="2" y="9" width="4" height="12"/>
                         <circle cx="4" cy="4" r="2"/>
                     </svg>
                 </a>
-                <a class="icon-btn" href="https://letterboxd.com/pignose28/" target="_blank" rel="noopener noreferrer" title="Letterboxd">
+                <a class="icon-btn" href="https://letterboxd.com/pignose28/" target="_blank" rel="noopener noreferrer" title="Letterboxd" aria-label="Letterboxd">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
                         <line x1="7" y1="2" x2="7" y2="22"/>
@@ -89,7 +85,7 @@
                 </div>
                 <div class="photo-wrap">
                     <div class="photo-box">
-                        <img src="./images/ruby-nyc.jpg" alt="Photo of Ruby Wu" width="300" height="380" decoding="async">
+                        <img src="./images/ruby-nyc-web.jpg" alt="Photo of Ruby Wu" width="750" height="1000" decoding="async" fetchpriority="high">
                     </div>
                 </div>
             </div>
@@ -101,33 +97,28 @@
                 <h2 class="section-heading">About Me</h2>
                 <div class="about-content-grid">
                     <div class="about-text-block">
-                        <p>I'm currently studying Electrical and Computer Engineering at Cornell University.</p>
                         <p>In my free time, I love crafting, trying different foods, playing golf, and exploring places. I'm always open to collaborating or talking about exciting ideas. Feel free to reach out!</p>
                     </div>
-                    <div class="about-facts-block">
-                        <div class="about-facts">
-                            <div class="about-fact">
-                                <p class="about-fact-label">School</p>
-                                <p class="about-fact-value">Cornell University</p>
-                            </div>
-                            <div class="about-fact">
-                                <p class="about-fact-label">Major</p>
-                                <p class="about-fact-value">ECE + AI Minor</p>
-                            </div>
-                            <div class="about-fact">
-                                <p class="about-fact-label">Location</p>
-                                <p class="about-fact-value">Ithaca, NY</p>
-                            </div>
-                            <div class="about-fact">
-                                <p class="about-fact-label">Award</p>
-                                <p class="about-fact-value"><a href="https://energized.edison.com/2024-edison-scholars" target="_blank" rel="noopener noreferrer" class="about-fact-link">Edison Scholar</a></p>
-                            </div>
+                    <div class="about-facts">
+                        <div class="about-fact">
+                            <p class="about-fact-label">School</p>
+                            <p class="about-fact-value">Cornell University</p>
                         </div>
-                        <div class="about-interests">
-                            <span class="about-interest">Golf</span>
-                            <span class="about-interest">Crafting</span>
-                            <span class="about-interest">Food</span>
-                            <span class="about-interest">Exploring</span>
+                        <div class="about-fact">
+                            <p class="about-fact-label">Major</p>
+                            <p class="about-fact-value">ECE + AI Minor</p>
+                        </div>
+                        <div class="about-fact">
+                            <p class="about-fact-label">Location</p>
+                            <p class="about-fact-value">Ithaca, NY</p>
+                        </div>
+                        <div class="about-fact">
+                            <p class="about-fact-label">Award</p>
+                            <p class="about-fact-value"><a href="https://energized.edison.com/2024-edison-scholars" target="_blank" rel="noopener noreferrer" class="about-fact-link">Edison Scholar</a></p>
+                        </div>
+                        <div class="about-fact about-fact-wide">
+                            <p class="about-fact-label">Interests</p>
+                            <p class="about-fact-value">Golf, crafting, food, exploring</p>
                         </div>
                     </div>
                 </div>
@@ -161,12 +152,12 @@
 
         <!-- Projects Section -->
         <section class="projects-section" id="projects">
-            <h2 class="projects-heading">Projects</h2>
+            <h2 class="section-heading projects-heading">Projects</h2>
 
             <div class="project-filters" role="group" aria-label="Filter projects by category">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="embedded">Embedded</button>
-                <button class="filter-btn" data-filter="software">Software</button>
+                <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+                <button type="button" class="filter-btn" data-filter="embedded" aria-pressed="false">Embedded</button>
+                <button type="button" class="filter-btn" data-filter="software" aria-pressed="false">Software</button>
             </div>
 
             <div class="projects-timeline">
@@ -185,10 +176,10 @@
                                     <span class="project-tag">Embedded</span>
                                 </div>
                             </div>
-                            <p class="project-desc">A pocket signal emulator inspired by Flipper Zero, built on the FRDM-KL46Z board. Captures and transmits RFID/NFC and infrared signals using a PN532 module and custom IR circuitry. Successfully cloned NFC tags and controlled TVs operating on the 38KHz band.</p>
+                            <p class="project-desc">A pocket signal emulator inspired by Flipper Zero, built on the FRDM-KL46Z board. Captures and transmits RFID/NFC and infrared signals using a PN532 module and custom IR circuitry. Successfully cloned NFC tags and controlled TVs operating on the 38&nbsp;kHz band.</p>
                         </div>
-                        <a class="project-video-link" href="https://www.youtube.com/watch?v=TvhQ8KdWxnI" target="_blank" rel="noopener noreferrer" data-video-id="TvhQ8KdWxnI">
-                            <img class="project-image project-image-contain" src="./images/tiny_flipper.png" alt="Flipper Zero Clone device" loading="lazy" decoding="async">
+                        <a class="project-video-link" href="https://www.youtube.com/watch?v=TvhQ8KdWxnI" target="_blank" rel="noopener noreferrer" data-video-id="TvhQ8KdWxnI" tabindex="-1" aria-hidden="true">
+                            <img class="project-image" src="./images/tiny_flipper.png" alt="Flipper Zero Clone device" width="719" height="531" loading="lazy" decoding="async">
                             <span class="project-video-play">
                                 <svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .7-4.6 3.2-5.4 6.1C.1 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.7 4.6-3.2 5.4-6.1C68 35 68 24 68 24s0-11-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
                             </span>
@@ -216,10 +207,10 @@
                             </div>
                             <p class="project-desc">Redesigned CUAir's airdrop control board for the 2026 SUAS mission update: dual-payload release, nichrome-wire cut mechanism, servo-controlled sequencing, and abort-safe behavior. Built and validated end-to-end Pixhawk-to-board communication with reliable drop/abort state transitions.</p>
                         </div>
-                        <img id="pcb-v4-image" class="project-image project-image-contain project-image-pcb" src="./images/airdrop_v4_pcb_layout.png" data-default-src="./images/airdrop_v4_pcb_layout.png" data-alt-src="./images/airdrop_v4_pcb_layout2d.png" alt="CUAir Airdrop V4 PCB layout" loading="lazy" decoding="async">
+                        <img id="pcb-v4-image" class="project-image project-image-pcb" src="./images/airdrop_v4_pcb_layout.png" data-default-src="./images/airdrop_v4_pcb_layout.png" data-alt-src="./images/airdrop_v4_pcb_layout2d.png" alt="CUAir Airdrop V4 PCB layout" width="1102" height="1105" loading="lazy" decoding="async">
                         <div class="project-links">
                             <a class="project-link-btn project-link-outline" href="https://robonation.gitbook.io/suas-resources/2026-team-handbook/section-3-mission-demonstration/3.6-search-detect-and-deliver" target="_blank" rel="noopener noreferrer">2026 SUAS rules</a>
-                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-v4-image">Show 2D View</button>
+                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-v4-image">Show 2D view</button>
                         </div>
                     </div>
                 </div>
@@ -239,8 +230,8 @@
                             </div>
                             <p class="project-desc">Mouse-drawn paths turned into real-world robot motion via two Pico Ws communicating over UDP. Supports direct-follow and optimized-route modes.</p>
                         </div>
-                        <a class="project-video-link" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer" data-video-id="8FTqkum7d4I">
-                            <img class="project-image project-image-contain" src="./images/drawing-car.png" alt="Autonomous Drawing Car" loading="lazy" decoding="async">
+                        <a class="project-video-link" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer" data-video-id="8FTqkum7d4I" tabindex="-1" aria-hidden="true">
+                            <img class="project-image" src="./images/drawing-car.png" alt="Autonomous Drawing Car" width="939" height="709" loading="lazy" decoding="async">
                             <span class="project-video-play">
                                 <svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .7-4.6 3.2-5.4 6.1C.1 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.7 4.6-3.2 5.4-6.1C68 35 68 24 68 24s0-11-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
                             </span>
@@ -268,10 +259,10 @@
                             </div>
                             <p class="project-desc">Designed a sensor board that verifies each airdrop step and reports status to the airdrop controller over I2C. Implemented dual-IMU door-state detection, servo potentiometer feedback for pin-removal tracking, and debugged early power integrity issues by reworking grounding for stable operation.</p>
                         </div>
-                        <img id="pcb-sensor-image" class="project-image project-image-contain project-image-pcb" src="./images/airdrop_sensor.png" data-default-src="./images/airdrop_sensor.png" data-alt-src="./images/airdrop_sensor2d.png" alt="CUAir Airdrop Sensor PCB layout" loading="lazy" decoding="async">
+                        <img id="pcb-sensor-image" class="project-image project-image-pcb" src="./images/airdrop_sensor.png" data-default-src="./images/airdrop_sensor.png" data-alt-src="./images/airdrop_sensor2d.png" alt="CUAir Airdrop Sensor PCB layout" width="1213" height="1048" loading="lazy" decoding="async">
                         <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir</a>
-                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-sensor-image">Show 2D View</button>
+                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir website</a>
+                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-sensor-image">Show 2D view</button>
                         </div>
                     </div>
                 </div>
@@ -326,7 +317,7 @@
                                     <span class="project-tag">Optics</span>
                                 </div>
                             </div>
-                            <p class="project-desc">Designed and validated a fiber-optic sensing system at NASA JPL. Defined evaluation metrics, characterized failure modes, and built a telemetry pipeline for near-real-time analysis. First author on a provisional patent "Interferometric Fiber-Optic Systems and Methods for Detecting Reflected Acoustic Signals".</p>
+                            <p class="project-desc">Designed and validated a fiber-optic sensing system at NASA JPL. Defined evaluation metrics, characterized failure modes, and built a telemetry pipeline for near-real-time analysis. First author on a provisional patent, &ldquo;Interferometric Fiber-Optic Systems and Methods for Detecting Reflected Acoustic Signals.&rdquo;</p>
                         </div>
                     </div>
                 </div>
@@ -348,7 +339,7 @@
                             <p class="project-desc">Full-stack ERP features for CUAir: React frontend, FastAPI + SQLite backend, and REST APIs with structured logging.</p>
                         </div>
                         <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">Visit CUAir Website</a>
+                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir website</a>
                         </div>
                     </div>
                 </div>
@@ -360,16 +351,16 @@
         <section class="mini-golf-section" id="mini-golf">
             <h2 class="section-heading">Mini Golf</h2>
             <p class="mini-golf-intro">Take a break and play a quick round!</p>
+            <p class="mini-golf-hint">Drag to pull back, then let go to putt.</p>
             <div class="canvas-container">
-                <canvas id="miniGolfCanvas" width="500" height="500"></canvas>
+                <canvas id="miniGolfCanvas" width="260" height="260" role="img" aria-label="Mini golf green"></canvas>
             </div>
         </section>
     </main>
 
-    <div class="image-lightbox" aria-hidden="true" role="dialog" aria-label="Expanded project image">
+    <div class="image-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded project image">
         <button class="image-lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
-        <button class="image-lightbox-toggle" type="button" hidden>Show 2D View</button>
-        <img class="image-lightbox-img" src="" alt="">
+        <button class="image-lightbox-toggle" type="button" hidden>Show 2D view</button>
     </div>
 
     <footer>
