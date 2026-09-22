@@ -298,7 +298,9 @@
             const close = slot.pane.querySelector(':scope > .pane-close');
             const open = desired[slot.depth];
             if (!close || !open) return;
-            close.href = urlFor(desired[slot.depth - 1] || '/');
+            // Always a hash route, so the click handler catches it instead of
+            // letting the browser reload the page.
+            close.href = '#' + (desired[slot.depth - 1] || '/');
             const heading = pages.get(open).querySelector('h2');
             close.setAttribute('aria-label', 'Close ' + (heading ? heading.textContent : 'page'));
         });
@@ -358,7 +360,7 @@
     }
 
     strip.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href^="#"]');
+        const link = e.target.closest('a[href^="#"], a.pane-close');
         if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         const pane = link.closest('.pane');
         if (!pane) return;
