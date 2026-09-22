@@ -208,23 +208,25 @@ body {
     color: var(--muted);
 }
 
-.page .page-close {
+.pane-close {
     position: absolute;
     top: calc(var(--cell) - 2px);
     right: calc(var(--cell) - 6px);
+    z-index: 2;
     display: grid;
     place-items: center;
     width: 28px;
     height: 28px;
     color: var(--muted);
+    transition: color 0.35s linear;
 }
 
-.page .page-close:hover,
-.page .page-close:focus-visible {
+.pane-close:hover,
+.pane-close:focus-visible {
     color: var(--link-on);
 }
 
-.page-close svg {
+.pane-close svg {
     width: 12px;
     height: 12px;
     fill: none;
@@ -352,6 +354,12 @@ body {
     margin-top: 1.75em;
 }
 
+/* Company names link out, but stay headings rather than reading as another
+   link in the list below them. */
+.job h3 a {
+    color: var(--ink);
+}
+
 .job .meta {
     margin-bottom: 0.4em;
 }
@@ -382,6 +390,18 @@ body {
 
 .project-media img.zoomable {
     cursor: zoom-in;
+}
+
+.project-media video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    background: var(--line);
+}
+
+.project-media figcaption {
+    margin-top: 0.4em;
 }
 
 .project-video .play {
@@ -473,7 +493,7 @@ body {
 
 html:not(.js) #wall,
 html:not(.js) #frame,
-html:not(.js) .page-close,
+html:not(.js) .pane-close,
 html:not(.js) .canvas-container,
 html:not(.js) .pcb-toggle {
     display: none;

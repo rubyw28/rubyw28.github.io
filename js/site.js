@@ -59,12 +59,17 @@
         if (route === '/') return;
         const heading = page.querySelector('h2');
         if (heading) heading.tabIndex = -1;
+    });
+
+    // The close control belongs to the pane, not to the page inside it, so it
+    // stays put while the page scrolls.
+    panes.forEach((pane, depth) => {
+        if (depth === 0) return;
         const close = document.createElement('a');
-        close.className = 'page-close';
-        close.href = '#' + (page.dataset.parent || '/');
-        close.setAttribute('aria-label', 'Close ' + (heading ? heading.textContent : 'page'));
+        close.className = 'pane-close';
+        close.href = '#/';
         close.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6"/></svg>';
-        page.prepend(close);
+        pane.appendChild(close);
     });
 
     // One slot per pane. Mid-switch a slot holds several layered pages,
@@ -163,10 +168,22 @@
         if (page.querySelector('#miniGolfCanvas') && typeof window.resizeCanvas === 'function') {
             requestAnimationFrame(() => window.resizeCanvas());
         }
+        // Videos only load once their page is open, and never autoplay for
+        // someone who asked for less motion.
+        if (!reduceMotion.matches) {
+            page.querySelectorAll('video[loop]').forEach((video) => {
+                const started = video.play();
+                if (started) started.catch(() => {});
+            });
+        }
     }
 
     function unmount(page) {
         page.style.clipPath = '';
+        page.querySelectorAll('video').forEach((video) => {
+            video.pause();
+            video.currentTime = 0;
+        });
         library.appendChild(page);
     }
 
@@ -271,12 +288,19 @@
     function syncActiveLinks() {
         slots.forEach((slot) => {
             const next = desired[slot.depth + 1];
-            slot.pane.querySelectorAll('a[href^="#/"]:not(.page-close)').forEach((link) => {
+            slot.pane.querySelectorAll('a[href^="#/"]:not(.pane-close)').forEach((link) => {
                 const on = !!next && routeFromHref(link.getAttribute('href')) === next;
                 link.classList.toggle('is-on', on);
                 if (on) link.setAttribute('aria-current', 'page');
                 else link.removeAttribute('aria-current');
             });
+
+            const close = slot.pane.querySelector(':scope > .pane-close');
+            const open = desired[slot.depth];
+            if (!close || !open) return;
+            close.href = urlFor(desired[slot.depth - 1] || '/');
+            const heading = pages.get(open).querySelector('h2');
+            close.setAttribute('aria-label', 'Close ' + (heading ? heading.textContent : 'page'));
         });
     }
 
@@ -342,7 +366,7 @@
         const depth = Number(pane.dataset.depth);
         const keyboard = e.detail === 0;
 
-        if (link.classList.contains('page-close')) {
+        if (link.classList.contains('pane-close')) {
             closeTo(depth, keyboard);
             return;
         }
@@ -400,7 +424,7 @@
     function paletteKeyAt(el) {
         if (!(el instanceof Element) || !strip.contains(el)) return null;
         const link = el.closest('a[href^="#/"]');
-        if (link && !link.classList.contains('page-close')) {
+        if (link && !link.classList.contains('pane-close')) {
             const page = pages.get(routeFromHref(link.getAttribute('href')));
             return page ? page.dataset.palette || 'home' : null;
         }

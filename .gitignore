@@ -1,0 +1,6 @@
+# Full-resolution source footage: too big for GitHub (it rejects files over
+# 100 MB). Keep the originals here, commit only the compressed web versions.
+*.mov
+*.MOV
+
+.DS_Store
