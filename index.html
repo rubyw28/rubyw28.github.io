@@ -2,381 +2,250 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ruby Wu</title>
+    <meta name="description" content="Ruby Wu studies Electrical and Computer Engineering at Cornell University.">
+    <meta name="theme-color" content="#07110b">
+    <meta name="color-scheme" content="dark">
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./favicon.svg">
-    <meta name="theme-color" content="#e8f5e9">
-    <link rel="stylesheet" href="./css/style.css" />
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <noscript>
-        <style>
-            .projects-section .timeline-item { opacity: 1 !important; transform: none !important; }
-        </style>
-    </noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <canvas id="wall" aria-hidden="true"></canvas>
+    <canvas id="frame" aria-hidden="true"></canvas>
 
-    <header>
-        <div class="logo-cluster">
-            <a href="#" class="logo-link logo-text">Ruby Wu</a>
+    <main id="viewport">
+        <div id="strip">
+            <div class="pane" data-depth="0" style="--depth: 0">
+                <article class="page page-home" data-route="/">
+                    <div class="page-main">
+                        <h1 class="name">Ruby Wu</h1>
+                        <p>I'm currently studying Electrical and Computer Engineering at Cornell University.</p>
+                        <nav class="link-list" aria-label="Sections">
+                            <a href="#/about">About</a>
+                            <a href="#/experience">Experience</a>
+                            <a href="#/projects">Projects</a>
+                            <a href="#/mini-golf">Mini golf</a>
+                        </nav>
+                    </div>
+                    <nav class="link-list page-bottom" aria-label="Elsewhere">
+                        <a href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://letterboxd.com/pignose28/" target="_blank" rel="noopener noreferrer">Letterboxd</a>
+                    </nav>
+                </article>
+            </div>
+            <div class="pane" data-depth="1" style="--depth: 1" hidden></div>
+            <div class="pane" data-depth="2" style="--depth: 2" hidden></div>
         </div>
-        <div class="nav-right">
-            <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-                <span class="nav-toggle-bar"></span>
-            </button>
-            <div class="nav-collapse" id="primaryNav">
-            <nav aria-label="Primary">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#mini-golf">Mini golf</a></li>
-                </ul>
+    </main>
+
+    <!--
+        Every page that can open in a pane lives here.
+        data-route   the URL after the # (e.g. #/projects/flipper-zero)
+        data-parent  the pane it opens from when someone lands on the URL directly
+        data-palette the light wall colors for this page (see PALETTES in js/site.js)
+    -->
+    <div id="library">
+
+        <article class="page" data-route="/about" data-parent="/" data-palette="about">
+            <h2>About</h2>
+            <img class="about-photo" src="./images/ruby-nyc-web.jpg" alt="Photo of Ruby Wu" width="750" height="1000" loading="lazy" decoding="async">
+            <p>In my free time, I love crafting, trying different foods, playing golf, and exploring places. I'm always open to collaborating or talking about exciting ideas. Feel free to reach out!</p>
+            <dl class="facts">
+                <div><dt>School</dt><dd>Cornell University</dd></div>
+                <div><dt>Major</dt><dd>ECE + AI Minor</dd></div>
+                <div><dt>Location</dt><dd>Ithaca, NY</dd></div>
+                <div><dt>Award</dt><dd><a href="https://energized.edison.com/2024-edison-scholars" target="_blank" rel="noopener noreferrer">Edison Scholar</a></dd></div>
+                <div><dt>Interests</dt><dd>Golf, crafting, food, exploring</dd></div>
+            </dl>
+        </article>
+
+        <article class="page" data-route="/experience" data-parent="/" data-palette="experience">
+            <h2>Experience</h2>
+            <section class="job" data-hover-palette="aws">
+                <h3>Amazon Web Services</h3>
+                <p class="meta">Summer 2026</p>
+                <p class="role">Software Engineer Intern, Amazon Quick Suite</p>
+                <p>Full-stack development in React, TypeScript, Java, and Amazon Web Services for enterprise chat workflows.</p>
+            </section>
+            <section class="job" data-hover-palette="jpl">
+                <h3>NASA Jet Propulsion Laboratory</h3>
+                <p class="meta">Summer 2025</p>
+                <p class="role">Research and Development Intern, Advanced RF &amp; Optical Technologies</p>
+                <p>Built satellite ground control software and first-authored a provisional patent on fiber-optic sensing.</p>
+                <nav class="link-list" aria-label="Projects at NASA JPL">
+                    <a href="#/projects/dora">DORA laser tracking</a>
+                    <a href="#/projects/fiber-optic">Fiber-optic sensing</a>
+                </nav>
+            </section>
+        </article>
+
+        <article class="page" data-route="/projects" data-parent="/" data-palette="projects">
+            <h2>Projects</h2>
+            <p class="group-label">Embedded</p>
+            <nav class="link-list project-list" aria-label="Embedded projects">
+                <a href="#/projects/flipper-zero"><span class="title">Flipper Zero Clone</span><span class="meta">2026</span></a>
+                <a href="#/projects/airdrop-v4"><span class="title">Airdrop V4 PCB + Firmware</span><span class="meta">2026</span></a>
+                <a href="#/projects/drawing-car"><span class="title">Autonomous Drawing Car</span><span class="meta">2025</span></a>
+                <a href="#/projects/airdrop-sensor"><span class="title">Airdrop Sensor PCB</span><span class="meta">2025</span></a>
+                <a href="#/projects/birdsong"><span class="title">Birdsong Synthesizer</span><span class="meta">2025</span></a>
             </nav>
-            <div class="social-icons">
-                <a class="icon-btn" href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                </a>
-                <a class="icon-btn" href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                </a>
-                <a class="icon-btn" href="https://letterboxd.com/pignose28/" target="_blank" rel="noopener noreferrer" title="Letterboxd" aria-label="Letterboxd">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
-                        <line x1="7" y1="2" x2="7" y2="22"/>
-                        <line x1="17" y1="2" x2="17" y2="22"/>
-                        <line x1="2" y1="12" x2="22" y2="12"/>
-                        <line x1="2" y1="7" x2="7" y2="7"/>
-                        <line x1="2" y1="17" x2="7" y2="17"/>
-                        <line x1="17" y1="17" x2="22" y2="17"/>
-                        <line x1="17" y1="7" x2="22" y2="7"/>
-                    </svg>
-                </a>
-            </div>
-            </div>
-        </div>
-    </header>
+            <p class="group-label">Software</p>
+            <nav class="link-list project-list" aria-label="Software projects">
+                <a href="#/projects/taipei-metro"><span class="title">Taipei Metro TUI</span><span class="meta">2026</span></a>
+                <a href="#/projects/dora"><span class="title">DORA Laser Tracking</span><span class="meta">2025</span></a>
+                <a href="#/projects/fiber-optic"><span class="title">Fiber-Optic Sensing</span><span class="meta">2025</span></a>
+                <a href="#/projects/cuair-erp"><span class="title">CUAir ERP</span><span class="meta">2024–now</span></a>
+            </nav>
+        </article>
 
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero" id="heroSection">
-            <div class="hero-inner">
-                <div>
-                    <h1 id="heroH1">Hi!<br><em>I am Ruby</em></h1>
-                    <p class="hero-greeting" id="heroGreeting" aria-live="polite"></p>
-                    <p class="hero-sub">I'm currently studying Electrical and Computer Engineering at Cornell University.</p>
-                    <div class="hero-cta">
-                        <a class="btn btn-primary" href="#projects">See my work</a>
-                        <a class="btn btn-ghost" href="#about">About me</a>
-                        <a class="btn btn-ghost" href="#mini-golf">Mini golf</a>
-                    </div>
-                </div>
-                <div class="photo-wrap">
-                    <div class="photo-box">
-                        <img src="./images/ruby-nyc-web.jpg" alt="Photo of Ruby Wu" width="750" height="1000" decoding="async" fetchpriority="high">
-                    </div>
-                </div>
-            </div>
-        </section>
+        <article class="page project" data-route="/projects/flipper-zero" data-parent="/projects" data-palette="flipper">
+            <h2>Flipper Zero Clone</h2>
+            <p class="meta">May 2026 · Embedded</p>
+            <a class="project-media project-video" href="https://www.youtube.com/watch?v=TvhQ8KdWxnI" target="_blank" rel="noopener noreferrer" aria-label="Watch the Flipper Zero Clone video demo on YouTube">
+                <img src="./images/tiny_flipper.png" alt="Flipper Zero Clone device" width="719" height="531" loading="lazy" decoding="async">
+                <span class="play" aria-hidden="true"></span>
+            </a>
+            <p>A pocket signal emulator inspired by Flipper Zero, built on the FRDM-KL46Z board. Captures and transmits RFID/NFC and infrared signals using a PN532 module and custom IR circuitry. Successfully cloned NFC tags and controlled TVs operating on the 38&nbsp;kHz band.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>RFID/NFC</li><li>Infrared</li><li>FRDM-KL46Z</li><li>SPI</li><li>Embedded</li>
+            </ul>
+            <nav class="link-list" aria-label="Flipper Zero Clone links">
+                <a href="https://www.youtube.com/watch?v=TvhQ8KdWxnI" target="_blank" rel="noopener noreferrer">Video demo ↗</a>
+                <a href="https://pages.github.coecis.cornell.edu/ece3140-spr2026/aas396-jmf445-rcw253/" target="_blank" rel="noopener noreferrer">Project website ↗</a>
+            </nav>
+        </article>
 
-        <!-- About Section -->
-        <section class="about-section" id="about">
-            <div class="about-section-inner">
-                <h2 class="section-heading">About Me</h2>
-                <div class="about-content-grid">
-                    <div class="about-text-block">
-                        <p>In my free time, I love crafting, trying different foods, playing golf, and exploring places. I'm always open to collaborating or talking about exciting ideas. Feel free to reach out!</p>
-                    </div>
-                    <div class="about-facts">
-                        <div class="about-fact">
-                            <p class="about-fact-label">School</p>
-                            <p class="about-fact-value">Cornell University</p>
-                        </div>
-                        <div class="about-fact">
-                            <p class="about-fact-label">Major</p>
-                            <p class="about-fact-value">ECE + AI Minor</p>
-                        </div>
-                        <div class="about-fact">
-                            <p class="about-fact-label">Location</p>
-                            <p class="about-fact-value">Ithaca, NY</p>
-                        </div>
-                        <div class="about-fact">
-                            <p class="about-fact-label">Award</p>
-                            <p class="about-fact-value"><a href="https://energized.edison.com/2024-edison-scholars" target="_blank" rel="noopener noreferrer" class="about-fact-link">Edison Scholar</a></p>
-                        </div>
-                        <div class="about-fact about-fact-wide">
-                            <p class="about-fact-label">Interests</p>
-                            <p class="about-fact-value">Golf, crafting, food, exploring</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <article class="page project" data-route="/projects/airdrop-v4" data-parent="/projects" data-palette="airdropV4">
+            <h2>CUAir Airdrop V4 PCB + Firmware</h2>
+            <p class="meta">Apr 2026 · Embedded</p>
+            <figure class="project-media">
+                <img id="pcb-v4-image" class="zoomable" src="./images/airdrop_v4_pcb_layout.png" data-alt-src="./images/airdrop_v4_pcb_layout2d.png" alt="CUAir Airdrop V4 PCB layout" width="1102" height="1105" loading="lazy" decoding="async">
+            </figure>
+            <p>Redesigned CUAir's airdrop control board for the 2026 SUAS mission update: dual-payload release, nichrome-wire cut mechanism, servo-controlled sequencing, and abort-safe behavior. Built and validated end-to-end Pixhawk-to-board communication with reliable drop/abort state transitions.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>PCB Design</li><li>ATmega328P</li><li>Pixhawk Lua</li><li>UART</li><li>Systems Test</li>
+            </ul>
+            <nav class="link-list" aria-label="Airdrop V4 links">
+                <button class="text-button pcb-toggle" type="button" data-image="pcb-v4-image">Show 2D view</button>
+                <a href="https://robonation.gitbook.io/suas-resources/2026-team-handbook/section-3-mission-demonstration/3.6-search-detect-and-deliver" target="_blank" rel="noopener noreferrer">2026 SUAS rules ↗</a>
+            </nav>
+        </article>
 
-        <!-- Experience Section -->
-        <section class="experience-section" id="experience">
-            <div class="experience-section-inner">
-                <h2 class="section-heading">Experience</h2>
-                <div class="experience-list">
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-company">Amazon Web Services</span>
-                            <span class="experience-date">Summer 2026</span>
-                        </div>
-                        <p class="experience-role">Software Engineer Intern, Amazon Quick Suite</p>
-                        <p class="experience-desc">Full-stack development in React, TypeScript, Java, and Amazon Web Services for enterprise chat workflows.</p>
-                    </div>
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <span class="experience-company">NASA Jet Propulsion Laboratory</span>
-                            <span class="experience-date">Summer 2025</span>
-                        </div>
-                        <p class="experience-role">Research and Development Intern, Advanced RF &amp; Optical Technologies</p>
-                        <p class="experience-desc">Built satellite ground control software and first-authored a provisional patent on fiber-optic sensing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <article class="page project" data-route="/projects/drawing-car" data-parent="/projects" data-palette="drawingCar">
+            <h2>Autonomous Drawing Car</h2>
+            <p class="meta">Dec 2025 · Embedded</p>
+            <a class="project-media project-video" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer" aria-label="Watch the Autonomous Drawing Car video demo on YouTube">
+                <img src="./images/drawing-car.png" alt="Autonomous Drawing Car" width="939" height="709" loading="lazy" decoding="async">
+                <span class="play" aria-hidden="true"></span>
+            </a>
+            <p>Mouse-drawn paths turned into real-world robot motion via two Pico Ws communicating over UDP. Supports direct-follow and optimized-route modes.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>Raspberry Pi</li><li>UDP</li><li>Embedded</li><li>IMU</li>
+            </ul>
+            <nav class="link-list" aria-label="Autonomous Drawing Car links">
+                <a href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer">Video demo ↗</a>
+                <a href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank" rel="noopener noreferrer">Project website ↗</a>
+            </nav>
+        </article>
 
-        <!-- Projects Section -->
-        <section class="projects-section" id="projects">
-            <h2 class="section-heading projects-heading">Projects</h2>
+        <article class="page project" data-route="/projects/airdrop-sensor" data-parent="/projects" data-palette="airdropSensor">
+            <h2>CUAir Airdrop Sensor PCB</h2>
+            <p class="meta">Dec 2025 · Embedded</p>
+            <figure class="project-media">
+                <img id="pcb-sensor-image" class="zoomable" src="./images/airdrop_sensor.png" data-alt-src="./images/airdrop_sensor2d.png" alt="CUAir Airdrop Sensor PCB layout" width="1213" height="1048" loading="lazy" decoding="async">
+            </figure>
+            <p>Designed a sensor board that verifies each airdrop step and reports status to the airdrop controller over I2C. Implemented dual-IMU door-state detection, servo potentiometer feedback for pin-removal tracking, and debugged early power integrity issues by reworking grounding for stable operation.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>PCB Design</li><li>I2C</li><li>BNO055</li><li>IMU Fusion</li><li>Hardware Bring-up</li>
+            </ul>
+            <nav class="link-list" aria-label="Airdrop Sensor links">
+                <button class="text-button pcb-toggle" type="button" data-image="pcb-sensor-image">Show 2D view</button>
+                <a href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir website ↗</a>
+            </nav>
+        </article>
 
-            <div class="project-filters" role="group" aria-label="Filter projects by category">
-                <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
-                <button type="button" class="filter-btn" data-filter="embedded" aria-pressed="false">Embedded</button>
-                <button type="button" class="filter-btn" data-filter="software" aria-pressed="false">Software</button>
-            </div>
+        <article class="page project" data-route="/projects/birdsong" data-parent="/projects" data-palette="birdsong">
+            <h2>Birdsong Synthesizer</h2>
+            <p class="meta">Aug 2025 · Embedded</p>
+            <p>Real-time audio synthesis in C using direct digital synthesis and fixed-point arithmetic under strict timing constraints. Block-based waveform generation with runtime parameter updates to eliminate audible artifacts.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>RP2040</li><li>C</li><li>DDS</li><li>DSP</li><li>SPI</li>
+            </ul>
+        </article>
 
-            <div class="projects-timeline">
+        <article class="page project" data-route="/projects/taipei-metro" data-parent="/projects" data-palette="taipeiMetro">
+            <h2>Taipei Metro TUI</h2>
+            <p class="meta">Sep 2026 · Software</p>
+            <figure class="project-media">
+                <img class="zoomable" src="./images/taipei-metro-tui.gif" alt="Taipei Metro TUI: the station board, station search, and the live network map with trains moving" width="820" height="532" loading="lazy" decoding="async">
+            </figure>
+            <p>A live Taipei Metro arrival board and network map in the terminal, covering 138 stations across 7 lines with names in Chinese and English. Taipei doesn't publish train positions, so the map infers them from TDX arrival sightings and station-to-station run times, and draws them over a braille-dot map built from real coordinates. A simulation mode runs with no network or API key.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>Python</li><li>Textual</li><li>TDX API</li><li>TUI</li>
+            </ul>
+            <nav class="link-list" aria-label="Taipei Metro TUI links">
+                <a href="https://github.com/rubyw28/taipei-metro-tui" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+            </nav>
+        </article>
 
-                <div class="timeline-item" data-category="embedded">
-                    <div class="timeline-date">May 2026</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">Flipper Zero Clone</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">RFID/NFC</span>
-                                    <span class="project-tag">Infrared</span>
-                                    <span class="project-tag">FRDM-KL46Z</span>
-                                    <span class="project-tag">SPI</span>
-                                    <span class="project-tag">Embedded</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">A pocket signal emulator inspired by Flipper Zero, built on the FRDM-KL46Z board. Captures and transmits RFID/NFC and infrared signals using a PN532 module and custom IR circuitry. Successfully cloned NFC tags and controlled TVs operating on the 38&nbsp;kHz band.</p>
-                        </div>
-                        <a class="project-video-link" href="https://www.youtube.com/watch?v=TvhQ8KdWxnI" target="_blank" rel="noopener noreferrer" data-video-id="TvhQ8KdWxnI" tabindex="-1" aria-hidden="true">
-                            <img class="project-image" src="./images/tiny_flipper.png" alt="Flipper Zero Clone device" width="719" height="531" loading="lazy" decoding="async">
-                            <span class="project-video-play">
-                                <svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .7-4.6 3.2-5.4 6.1C.1 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.7 4.6-3.2 5.4-6.1C68 35 68 24 68 24s0-11-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
-                            </span>
-                        </a>
-                        <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://www.youtube.com/watch?v=TvhQ8KdWxnI" target="_blank" rel="noopener noreferrer">Video demo</a>
-                            <a class="project-link-btn project-link-outline" href="https://pages.github.coecis.cornell.edu/ece3140-spr2026/aas396-jmf445-rcw253/" target="_blank" rel="noopener noreferrer">Project website</a>
-                        </div>
-                    </div>
-                </div>
+        <article class="page project" data-route="/projects/dora" data-parent="/projects" data-palette="dora">
+            <h2>DORA Laser Tracking Control System</h2>
+            <p class="meta">May – Aug 2025 · Software</p>
+            <p>Full-stack control system for precision laser tracking at NASA JPL. Built RESTful APIs, a real-time React dashboard, and BER analysis with NumPy and Pandas.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>NASA JPL</li><li>Python</li><li>React</li><li>MQTT</li>
+            </ul>
+        </article>
 
-                <div class="timeline-item" data-category="embedded">
-                    <div class="timeline-date">Apr 2026</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">CUAir Airdrop V4 PCB + Firmware</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">PCB Design</span>
-                                    <span class="project-tag">ATmega328P</span>
-                                    <span class="project-tag">Pixhawk Lua</span>
-                                    <span class="project-tag">UART</span>
-                                    <span class="project-tag">Systems Test</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Redesigned CUAir's airdrop control board for the 2026 SUAS mission update: dual-payload release, nichrome-wire cut mechanism, servo-controlled sequencing, and abort-safe behavior. Built and validated end-to-end Pixhawk-to-board communication with reliable drop/abort state transitions.</p>
-                        </div>
-                        <img id="pcb-v4-image" class="project-image project-image-pcb" src="./images/airdrop_v4_pcb_layout.png" data-default-src="./images/airdrop_v4_pcb_layout.png" data-alt-src="./images/airdrop_v4_pcb_layout2d.png" alt="CUAir Airdrop V4 PCB layout" width="1102" height="1105" loading="lazy" decoding="async">
-                        <div class="project-links">
-                            <a class="project-link-btn project-link-outline" href="https://robonation.gitbook.io/suas-resources/2026-team-handbook/section-3-mission-demonstration/3.6-search-detect-and-deliver" target="_blank" rel="noopener noreferrer">2026 SUAS rules</a>
-                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-v4-image">Show 2D view</button>
-                        </div>
-                    </div>
-                </div>
+        <article class="page project" data-route="/projects/fiber-optic" data-parent="/projects" data-palette="fiberOptic">
+            <h2>Interferometric Fiber-Optic Sensing System</h2>
+            <p class="meta">May – Aug 2025 · Software</p>
+            <p>Designed and validated a fiber-optic sensing system at NASA JPL. Defined evaluation metrics, characterized failure modes, and built a telemetry pipeline for near-real-time analysis. First author on a provisional patent, &ldquo;Interferometric Fiber-Optic Systems and Methods for Detecting Reflected Acoustic Signals.&rdquo;</p>
+            <ul class="tags" aria-label="Tags">
+                <li>NASA JPL</li><li>Python</li><li>Signal Processing</li><li>Optics</li>
+            </ul>
+        </article>
 
-                <div class="timeline-item" data-category="embedded">
-                    <div class="timeline-date">Dec 2025</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">Autonomous Drawing Car</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">Raspberry Pi</span>
-                                    <span class="project-tag">UDP</span>
-                                    <span class="project-tag">Embedded</span>
-                                    <span class="project-tag">IMU</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Mouse-drawn paths turned into real-world robot motion via two Pico Ws communicating over UDP. Supports direct-follow and optimized-route modes.</p>
-                        </div>
-                        <a class="project-video-link" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer" data-video-id="8FTqkum7d4I" tabindex="-1" aria-hidden="true">
-                            <img class="project-image" src="./images/drawing-car.png" alt="Autonomous Drawing Car" width="939" height="709" loading="lazy" decoding="async">
-                            <span class="project-video-play">
-                                <svg viewBox="0 0 68 48"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.6c-3 .7-4.6 3.2-5.4 6.1C.1 13 0 24 0 24s0 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.6c3-.7 4.6-3.2 5.4-6.1C68 35 68 24 68 24s0-11-1.5-16.3z" fill="red"/><path d="M45 24L27 14v20" fill="#fff"/></svg>
-                            </span>
-                        </a>
-                        <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://www.youtube.com/watch?v=8FTqkum7d4I" target="_blank" rel="noopener noreferrer">Video demo</a>
-                            <a class="project-link-btn project-link-outline" href="https://ece4760.github.io/Projects/Fall2025/sjz44_glk49_rcw253/final_report.html" target="_blank" rel="noopener noreferrer">Project website</a>
-                        </div>
-                    </div>
-                </div>
+        <article class="page project" data-route="/projects/cuair-erp" data-parent="/projects" data-palette="erp">
+            <h2>CUAir ERP</h2>
+            <p class="meta">Dec 2024 – Present · Software</p>
+            <p>Full-stack ERP features for CUAir: React frontend, FastAPI + SQLite backend, and REST APIs with structured logging.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>React</li><li>FastAPI</li><li>SQLite</li><li>REST APIs</li><li>Structured Logging</li>
+            </ul>
+            <nav class="link-list" aria-label="CUAir ERP links">
+                <a href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir website ↗</a>
+            </nav>
+        </article>
 
-                <div class="timeline-item" data-category="embedded">
-                    <div class="timeline-date">Dec 2025</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">CUAir Airdrop Sensor PCB</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">PCB Design</span>
-                                    <span class="project-tag">I2C</span>
-                                    <span class="project-tag">BNO055</span>
-                                    <span class="project-tag">IMU Fusion</span>
-                                    <span class="project-tag">Hardware Bring-up</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Designed a sensor board that verifies each airdrop step and reports status to the airdrop controller over I2C. Implemented dual-IMU door-state detection, servo potentiometer feedback for pin-removal tracking, and debugged early power integrity issues by reworking grounding for stable operation.</p>
-                        </div>
-                        <img id="pcb-sensor-image" class="project-image project-image-pcb" src="./images/airdrop_sensor.png" data-default-src="./images/airdrop_sensor.png" data-alt-src="./images/airdrop_sensor2d.png" alt="CUAir Airdrop Sensor PCB layout" width="1213" height="1048" loading="lazy" decoding="async">
-                        <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir website</a>
-                            <button class="project-link-btn project-link-outline project-view-toggle" type="button" data-target-image="pcb-sensor-image">Show 2D view</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-category="embedded">
-                    <div class="timeline-date">Aug 2025</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">Birdsong Synthesizer</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">RP2040</span>
-                                    <span class="project-tag">C</span>
-                                    <span class="project-tag">DDS</span>
-                                    <span class="project-tag">DSP</span>
-                                    <span class="project-tag">SPI</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Real-time audio synthesis in C using direct digital synthesis and fixed-point arithmetic under strict timing constraints. Block-based waveform generation with runtime parameter updates to eliminate audible artifacts.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-category="software">
-                    <div class="timeline-date">May – Aug 2025</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">DORA Laser Tracking Control System</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">NASA JPL</span>
-                                    <span class="project-tag">Python</span>
-                                    <span class="project-tag">React</span>
-                                    <span class="project-tag">MQTT</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Full-stack control system for precision laser tracking at NASA JPL. Built RESTful APIs, a real-time React dashboard, and BER analysis with NumPy and Pandas.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-category="software">
-                    <div class="timeline-date">May – Aug 2025</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">Interferometric Fiber-Optic Sensing System</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">NASA JPL</span>
-                                    <span class="project-tag">Python</span>
-                                    <span class="project-tag">Signal Processing</span>
-                                    <span class="project-tag">Optics</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Designed and validated a fiber-optic sensing system at NASA JPL. Defined evaluation metrics, characterized failure modes, and built a telemetry pipeline for near-real-time analysis. First author on a provisional patent, &ldquo;Interferometric Fiber-Optic Systems and Methods for Detecting Reflected Acoustic Signals.&rdquo;</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-category="software">
-                    <div class="timeline-date">Dec 2024 – Present</div>
-                    <div class="project-card">
-                        <div class="project-card-body">
-                            <div class="project-meta">
-                                <span class="project-title">CUAir ERP</span>
-                                <div class="project-tags">
-                                    <span class="project-tag">React</span>
-                                    <span class="project-tag">FastAPI</span>
-                                    <span class="project-tag">SQLite</span>
-                                    <span class="project-tag">REST APIs</span>
-                                    <span class="project-tag">Structured Logging</span>
-                                </div>
-                            </div>
-                            <p class="project-desc">Full-stack ERP features for CUAir: React frontend, FastAPI + SQLite backend, and REST APIs with structured logging.</p>
-                        </div>
-                        <div class="project-links">
-                            <a class="project-link-btn project-link-solid" href="https://cuair.org/" target="_blank" rel="noopener noreferrer">CUAir website</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Mini Golf Section -->
-        <section class="mini-golf-section" id="mini-golf">
-            <h2 class="section-heading">Mini Golf</h2>
-            <p class="mini-golf-intro">Take a break and play a quick round!</p>
-            <p class="mini-golf-hint">Drag to pull back, then let go to putt.</p>
+        <article class="page" data-route="/mini-golf" data-parent="/" data-palette="golf">
+            <h2>Mini golf</h2>
+            <p>Take a break and play a quick round!</p>
+            <p class="meta">Drag to pull back, then let go to putt.</p>
             <div class="canvas-container">
                 <canvas id="miniGolfCanvas" width="260" height="260" role="img" aria-label="Mini golf green"></canvas>
             </div>
-        </section>
-    </main>
+        </article>
 
-    <div class="image-lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Expanded project image">
-        <button class="image-lightbox-close" type="button" aria-label="Close image viewer">&times;</button>
-        <button class="image-lightbox-toggle" type="button" hidden>Show 2D view</button>
     </div>
 
-    <footer>
-        <span class="footer-signature" id="footerSignature" title="Ruby Wu · 2026">Ruby Wu · 2026</span>
-        <div class="footer-links">
-            <a href="https://github.com/rubyw28" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/ruby-chia-juei-wu" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://letterboxd.com/pignose28/" target="_blank" rel="noopener noreferrer">Letterboxd</a>
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded project image" hidden>
+        <img alt="">
+        <div class="lightbox-controls">
+            <button class="text-button lightbox-toggle" type="button" hidden>Show 2D view</button>
+            <button class="text-button lightbox-close" type="button">Close</button>
         </div>
-    </footer>
+    </div>
 
-    <script src="./js/nav-menu.js"></script>
-    <script src="./js/header-height.js"></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/playful.js"></script>
-    <script src="./js/projects-scroll.js" defer></script>
+    <script src="./js/wall.js"></script>
+    <script src="./js/site.js"></script>
     <script src="./js/mini-golf-game.js"></script>
 </body>
 </html>

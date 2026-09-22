@@ -86,6 +86,10 @@ function resetPositions() {
 function resizeCanvas() {
     const baseSize = 600;
     const available = canvas.parentElement.clientWidth;
+    // The course waits in a closed pane until it's opened; size it then.
+    if (!available) {
+        return;
+    }
     let newSize = Math.floor(Math.min(available, window.innerWidth * 0.8, window.innerHeight * 0.8, baseSize));
 
     // Mobile browsers fire resize when the address bar slides; only reset the course when the size really changes.
@@ -101,11 +105,10 @@ function resizeCanvas() {
     // Calculate maxPredictionLineLength based on canvas size
     maxPredictionLineLength = newSize * 0.5; 
 
-    drawCourse();
-    if (gameStatus === "won" || gameStatus === "out_of_bounds") {
-    } else {
+    if (gameStatus !== "won" && gameStatus !== "out_of_bounds") {
         resetPositions();
     }
+    drawCourse();
 }
 
 // Function to draw the golf course elements
@@ -171,37 +174,37 @@ function drawCourse() {
         ctx.fillStyle = "#1a1a1a";
         ctx.textAlign = "center";
 
-        ctx.font = "bold 20px 'Quicksand', sans-serif";
+        ctx.font = "bold 20px 'Geist', sans-serif";
         ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
 
-        ctx.font = "bold 30px 'Quicksand', sans-serif";
+        ctx.font = "bold 30px 'Geist', sans-serif";
         ctx.fillText(`Hole in ${strokes}!`, canvas.width / 2, canvas.height / 2 + 10);
 
-        ctx.font = "bold 15px 'Quicksand', sans-serif";
+        ctx.font = "bold 15px 'Geist', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
     } else if (gameStatus === "lost_streak") {
         ctx.fillStyle = "#6e1111";
         ctx.textAlign = "center";
 
-        ctx.font = "bold 20px 'Quicksand', sans-serif";
+        ctx.font = "bold 20px 'Geist', sans-serif";
         ctx.fillText(`Hole in One Streak: ${previousHoleInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
 
-        ctx.font = "bold 30px 'Quicksand', sans-serif";
+        ctx.font = "bold 30px 'Geist', sans-serif";
         ctx.fillText(`Streak Lost!`, canvas.width / 2, canvas.height / 2 + 10);
 
-        ctx.font = "bold 15px 'Quicksand', sans-serif";
+        ctx.font = "bold 15px 'Geist', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
     } else if (gameStatus === "out_of_bounds") {
         ctx.fillStyle = "#6e1111";
         ctx.textAlign = "center";
 
-        ctx.font = "bold 20px 'Quicksand', sans-serif";
+        ctx.font = "bold 20px 'Geist', sans-serif";
         ctx.fillText(`Hole in One Streak: ${holeInOneStreak}`, canvas.width / 2, canvas.height / 2 - 30);
 
-        ctx.font = "bold 30px 'Quicksand', sans-serif";
+        ctx.font = "bold 30px 'Geist', sans-serif";
         ctx.fillText(`Out of Bounds!`, canvas.width / 2, canvas.height / 2 + 10);
 
-        ctx.font = "bold 15px 'Quicksand', sans-serif";
+        ctx.font = "bold 15px 'Geist', sans-serif";
         ctx.fillText("Tap or click to play again!", canvas.width / 2, canvas.height / 2 + 40);
     }
 }
@@ -421,8 +424,11 @@ function handleEnd(e) {
 }
 
 // Initial setup when the window loads
-window.onload = function () {
+window.addEventListener('resize', resizeCanvas);
+window.addEventListener('load', function () {
+    if (!canvas.parentElement.clientWidth) {
+        return;
+    }
     resizeCanvas();
     resetGame();
-    window.addEventListener('resize', resizeCanvas);
-};
+});
