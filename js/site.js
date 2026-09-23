@@ -68,7 +68,10 @@
         const close = document.createElement('a');
         close.className = 'pane-close';
         close.href = '#/';
-        close.innerHTML = '<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6"/></svg>';
+        // An X built from cells, to match the wall's tiles.
+        close.innerHTML = '<svg viewBox="0 0 10 10" aria-hidden="true">' +
+            '<path d="M0 0h2v2H0zM8 0h2v2H8zM2 2h2v2H2zM6 2h2v2H6zM4 4h2v2H4z' +
+            'M2 6h2v2H2zM6 6h2v2H6zM0 8h2v2H0zM8 8h2v2H8z"/></svg>';
         pane.appendChild(close);
     });
 

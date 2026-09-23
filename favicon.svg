@@ -1,4 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#e8f5e9"/>
-  <text x="16" y="16" dominant-baseline="central" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="11" font-weight="700" letter-spacing="-0.04em" fill="#065f46">RW</text>
+  <!-- A scrap of the light wall: 4x4 tiles, same greens and same 1px gaps. -->
+  <rect width="32" height="32" rx="6" fill="#07110b"/>
+  <g>
+    <rect x="2.5" y="2.5" width="6" height="6" rx="1.5" fill="#b5f23d"/>
+    <rect x="9.5" y="2.5" width="6" height="6" rx="1.5" fill="#7ef0b4"/>
+    <rect x="16.5" y="2.5" width="6" height="6" rx="1.5" fill="#34d17f"/>
+    <rect x="23.5" y="2.5" width="6" height="6" rx="1.5" fill="#18c26b"/>
+
+    <rect x="2.5" y="9.5" width="6" height="6" rx="1.5" fill="#7ef0b4"/>
+    <rect x="9.5" y="9.5" width="6" height="6" rx="1.5" fill="#d8f6a4"/>
+    <rect x="16.5" y="9.5" width="6" height="6" rx="1.5" fill="#5ee89a"/>
+    <rect x="23.5" y="9.5" width="6" height="6" rx="1.5" fill="#12b886"/>
+
+    <rect x="2.5" y="16.5" width="6" height="6" rx="1.5" fill="#34d17f"/>
+    <rect x="9.5" y="16.5" width="6" height="6" rx="1.5" fill="#5ee89a"/>
+    <rect x="16.5" y="16.5" width="6" height="6" rx="1.5" fill="#1fc7b6"/>
+    <rect x="23.5" y="16.5" width="6" height="6" rx="1.5" fill="#0f9d58"/>
+
+    <rect x="2.5" y="23.5" width="6" height="6" rx="1.5" fill="#18c26b"/>
+    <rect x="9.5" y="23.5" width="6" height="6" rx="1.5" fill="#12b886"/>
+    <rect x="16.5" y="23.5" width="6" height="6" rx="1.5" fill="#0f9d58"/>
+    <rect x="23.5" y="23.5" width="6" height="6" rx="1.5" fill="#0ea968"/>
+  </g>
 </svg>
