@@ -126,7 +126,7 @@
         const waves = new Map();
         const switches = Array.from({ length: BANDS }, () => []);
 
-        let camX = 0, camFrom = 0, camTo = 0, camT = 1;
+        let camX = 0, camFrom = 0, camTo = 0, camT = 1, camWait = 0;
 
         const lutFrom = new Float32Array(LUT_SIZE * 3);
         const lutTo = new Float32Array(LUT_SIZE * 3);
@@ -422,11 +422,15 @@
             return Math.round(camX * dpr) / dpr;
         }
 
-        function setCamera(x, animate) {
+        // `wait` holds the pan back for a moment so a sweep has time to show
+        // before the panes slide. On a narrow screen the pane being closed is
+        // the one that slides away, which otherwise hides the sweep entirely.
+        function setCamera(x, animate, wait) {
             if (x === camTo) return;
             camFrom = camX;
             camTo = x;
             camT = animate && motion ? 0 : 1;
+            camWait = camT < 1 ? wait || 0 : 0;
             if (camT >= 1) {
                 camX = x;
                 hooks.onCamera(snapCamera());
@@ -436,6 +440,10 @@
 
         function updateCamera(dt) {
             if (camT >= 1) return;
+            if (camWait > 0) {
+                camWait -= dt;
+                return;
+            }
             camT = Math.min(1, camT + dt / CFG.cameraDur);
             camX = camFrom + (camTo - camFrom) * easeInOut(camT);
             hooks.onCamera(snapCamera());

@@ -171,14 +171,18 @@
         if (page.querySelector('#miniGolfCanvas') && typeof window.resizeCanvas === 'function') {
             requestAnimationFrame(() => window.resizeCanvas());
         }
-        // Videos only load once their page is open, and never autoplay for
-        // someone who asked for less motion.
-        if (!reduceMotion.matches) {
-            page.querySelectorAll('video[loop]').forEach((video) => {
-                const started = video.play();
-                if (started) started.catch(() => {});
-            });
-        }
+    }
+
+    // Starting a video costs one long frame while the decoder spins up, so it
+    // waits until the pane has finished animating rather than stuttering the
+    // sweep. Never autoplays for someone who asked for less motion.
+    function playMedia(slot) {
+        const page = slot.layers[slot.layers.length - 1];
+        if (!page || reduceMotion.matches) return;
+        page.querySelectorAll('video[loop]').forEach((video) => {
+            const started = video.play();
+            if (started) started.catch(() => {});
+        });
     }
 
     function unmount(page) {
@@ -235,7 +239,10 @@
     function onSwitchDone(depth) {
         const slot = slots[depth];
         if (slot.layers.length > 1) unmount(slot.layers.shift());
-        if (slot.layers.length === 1) slot.layers[0].style.clipPath = '';
+        if (slot.layers.length === 1) {
+            slot.layers[0].style.clipPath = '';
+            playMedia(slot);
+        }
     }
 
     function clipPolygon(upper, lower, height) {
@@ -268,6 +275,7 @@
                     opening.push(d);
                 } else if (slot.layers[slot.layers.length - 1] !== page) {
                     switchTo(slot, page, animate);
+                    if (!animate) playMedia(slot);
                 }
             } else if (slot.state === 'open' || slot.state === 'opening') {
                 settleLayers(slot);
@@ -278,12 +286,18 @@
         }
 
         wall.openBands(opening, animate, (d) => {
-            if (slots[d].state === 'opening') slots[d].state = 'open';
+            if (slots[d].state !== 'opening') return;
+            slots[d].state = 'open';
+            playMedia(slots[d]);
         });
         wall.closeBands(closing, animate, (d) => {
             if (slots[d].state === 'closing') finishClose(slots[d]);
         });
-        wall.setCamera(cameraFor(stack.length - 1), animate);
+        // When a close also pans the panes sideways, the pane being closed is
+        // the one sliding away, so let the sweep cover it before anything
+        // moves. (No pan needed, no wait: setCamera ignores it.)
+        const panWait = closing.length && !opening.length ? 0.4 : 0;
+        wall.setCamera(cameraFor(stack.length - 1), animate, panWait);
         syncActiveLinks();
         refreshPalette();
     }

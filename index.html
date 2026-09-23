@@ -90,7 +90,7 @@
                 <h3><a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">Amazon Web Services</a></h3>
                 <p class="meta">Summer 2026</p>
                 <p class="role">Software Engineer Intern, Amazon Quick Suite</p>
-                <p>Full-stack development in React, TypeScript, Java, and Amazon Web Services for enterprise chat workflows.</p>
+                <p>Full-stack development in React, TypeScript, Java, Python, and Amazon Web Services for enterprise chat workflows.</p>
             </section>
             <section class="job" data-hover-palette="jpl">
                 <h3><a href="https://www.jpl.nasa.gov/" target="_blank" rel="noopener noreferrer">NASA Jet Propulsion Laboratory</a></h3>
@@ -143,14 +143,14 @@
         <article class="page project" data-route="/projects/airdrop-v4" data-parent="/projects" data-palette="airdropV4">
             <h2>CUAir Airdrop V4 PCB + Firmware</h2>
             <p class="meta">Apr 2026 · Embedded</p>
-            <figure class="project-media">
-                <img id="pcb-v4-image" class="zoomable" src="./images/airdrop_v4_pcb_layout.png" data-alt-src="./images/airdrop_v4_pcb_layout2d.png" alt="CUAir Airdrop V4 PCB layout" width="1102" height="1105" loading="lazy" decoding="async">
-            </figure>
             <!-- Silent loop: js/site.js starts it when this page opens and
                  stops it when the pane closes. -->
             <figure class="project-media">
                 <video src="./images/airdrop-v4-plane.mp4" poster="./images/airdrop-v4-plane.jpg" width="640" height="360" muted loop playsinline preload="none" controls></video>
                 <figcaption class="meta">The board in the plane, mid-flight</figcaption>
+            </figure>
+            <figure class="project-media">
+                <img id="pcb-v4-image" class="zoomable" src="./images/airdrop_v4_pcb_layout.png" data-alt-src="./images/airdrop_v4_pcb_layout2d.png" alt="CUAir Airdrop V4 PCB layout" width="1102" height="1105" loading="lazy" decoding="async">
             </figure>
             <p>Redesigned CUAir's airdrop control board for the 2026 SUAS mission update: two payloads released in one flight, a nichrome burn wire that cuts both the holding line and the spool line, and one servo covering all four cut angles. A Lua script on the Pixhawk takes the drop command from the ground station and passes it over UART to a state machine on the ATmega328P, which runs the sequence and reports each step back. An abort at any point kills the nichrome, retracts the servo and closes the bay doors.</p>
             <ul class="tags" aria-label="Tags">
