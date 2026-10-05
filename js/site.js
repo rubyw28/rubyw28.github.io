@@ -24,6 +24,7 @@
         jpl: ['#1f6feb', '#3d8bfd', '#5aa9ff', '#8cc4ff', '#2155c4', '#fc3d21'],
         projects: ['#11a150', '#1fbf62', '#3ad67a', '#d4a82a', '#f0c83c', '#e6b422'],
         golf: ['#2fa84f', '#4cc05f', '#6fd36a', '#9be070', '#e8d27a', '#f7fff0'],
+        crowdcourse: ['#e0ff00', '#c8f000', '#ff9e85', '#ffb39e', '#ff3b30', '#1fd6c4'],
         flipper: ['#ff8200', '#ff9a1f', '#ffb040', '#ff6a00', '#ffc36b', '#ff8f2e'],
         airdropV4: ['#0f9d4a', '#17b95a', '#2fd36f', '#d4a82a', '#f0c83c', '#1aa653'],
         drawingCar: ['#ef4056', '#ffb000', '#1fbfa6', '#3d8bfd', '#ff7a1a', '#ffd23f'],

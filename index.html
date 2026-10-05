@@ -108,6 +108,7 @@
             <h2>Projects</h2>
             <p class="group-label">Embedded</p>
             <nav class="link-list project-list" aria-label="Embedded projects">
+                <a href="#/projects/crowdcourse"><span class="title">CrowdCourse</span><span class="meta">2026</span></a>
                 <a href="#/projects/flipper-zero"><span class="title">Flipper Zero Clone</span><span class="meta">2026</span></a>
                 <a href="#/projects/airdrop-v4"><span class="title">Airdrop V4 PCB + Firmware</span><span class="meta">2026</span></a>
                 <a href="#/projects/drawing-car"><span class="title">Autonomous Drawing Car</span><span class="meta">2025</span></a>
@@ -120,6 +121,22 @@
                 <a href="#/projects/dora"><span class="title">DORA Laser Tracking</span><span class="meta">2025</span></a>
                 <a href="#/projects/fiber-optic"><span class="title">Fiber-Optic Sensing</span><span class="meta">2025</span></a>
                 <a href="#/projects/cuair-erp"><span class="title">CUAir ERP</span><span class="meta">2024–now</span></a>
+            </nav>
+        </article>
+
+        <article class="page project" data-route="/projects/crowdcourse" data-parent="/projects" data-palette="crowdcourse">
+            <h2>CrowdCourse</h2>
+            <p class="meta">Oct 2026 · Embedded · BigRed//Hacks · Won MLH Best Use of Tiger Data</p>
+            <figure class="project-media">
+                <img class="zoomable" src="./images/crowdcourse.jpg" alt="CrowdCourse: the companion app showing closeness scores and an SOS alert, next to the bracelet worn on an arm with its LED strip lit" width="1200" height="899" loading="lazy" decoding="async">
+            </figure>
+            <p>Wearable ESP32 bracelets that help friends find each other in a crowd, with no internet, cell service or app. The bracelets talk directly over ESP-NOW, and RSSI between them is calibrated per room into a 0&ndash;100 closeness score that a 12-LED strip shows from blue to red as you get closer. A Lighthouse button sends an emergency beacon to the group. A Node.js bridge logs telemetry to Tiger Data (time-series Postgres), and a Gemini agent answers questions about it in plain language, including over iMessage.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>ESP32</li><li>ESP-NOW</li><li>RSSI</li><li>C++</li><li>Node.js</li><li>Tiger Data</li><li>Gemini API</li>
+            </ul>
+            <nav class="link-list" aria-label="CrowdCourse links">
+                <a href="https://github.com/rubyw28/crowdcourse" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+                <a href="https://devpost.com/software/crowdcourse-358o6i" target="_blank" rel="noopener noreferrer">Devpost ↗</a>
             </nav>
         </article>
 
