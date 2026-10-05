@@ -30,6 +30,7 @@
         drawingCar: ['#ef4056', '#ffb000', '#1fbfa6', '#3d8bfd', '#ff7a1a', '#ffd23f'],
         airdropSensor: ['#7c3aed', '#9155f7', '#a878ff', '#c49bff', '#d4a82a', '#8b45f0'],
         birdsong: ['#4cc3ff', '#7fd4ff', '#ffd60a', '#ff5a5f', '#ffb347', '#38b6ff'],
+        tinyrv1: ['#b31b1b', '#d63a2f', '#ff5a4a', '#ffb000', '#ffd23f', '#3d8bfd'],
         dora: ['#ff2d2d', '#ff4d4d', '#ff6b6b', '#ff3b1f', '#ff8080', '#e81c3a'],
         taipeiMetro: ['#e3002c', '#1a86d6', '#c48c31', '#11a36f', '#f8b61c', '#ffdb00', '#9258c8'],
         fiberOptic: ['#00b4d8', '#1cc8ee', '#48d8f5', '#7ae7ff', '#0096c7', '#2ee6d6'],
