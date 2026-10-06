@@ -111,10 +111,13 @@
                 <a href="#/projects/crowdcourse"><span class="title">CrowdCourse</span><span class="meta">2026</span></a>
                 <a href="#/projects/flipper-zero"><span class="title">Flipper Zero Clone</span><span class="meta">2026</span></a>
                 <a href="#/projects/airdrop-v4"><span class="title">Airdrop V4 PCB + Firmware</span><span class="meta">2026</span></a>
-                <a href="#/projects/tinyrv1"><span class="title">TinyRV1 Processor + Accelerator</span><span class="meta">2026</span></a>
                 <a href="#/projects/drawing-car"><span class="title">Autonomous Drawing Car</span><span class="meta">2025</span></a>
                 <a href="#/projects/airdrop-sensor"><span class="title">Airdrop Sensor PCB</span><span class="meta">2025</span></a>
                 <a href="#/projects/birdsong"><span class="title">Birdsong Synthesizer</span><span class="meta">2025</span></a>
+            </nav>
+            <p class="group-label">Digital Design</p>
+            <nav class="link-list project-list" aria-label="Digital design projects">
+                <a href="#/projects/tinyrv1"><span class="title">TinyRV1 Processor + Accelerator</span><span class="meta">2026</span></a>
             </nav>
             <p class="group-label">Software</p>
             <nav class="link-list project-list" aria-label="Software projects">
@@ -180,16 +183,6 @@
             </nav>
         </article>
 
-        <article class="page project" data-route="/projects/tinyrv1" data-parent="/projects" data-palette="tinyrv1">
-            <h2>TinyRV1 Processor + Accelerator</h2>
-            <p class="meta">Spring &amp; Fall 2026 · Embedded · Cornell ECE 2300 · Teaching Assistant</p>
-            <p>I designed and built a single-cycle processor for TinyRV1, a small subset of RISC-V, from scratch in Verilog and ran it on an FPGA. It's the capstone lab of ECE 2300 (Digital Logic and Computer Organization), which I now TA. I started with the RTL building blocks: muxes, registers, an ALU, a multiplier, an immediate generator and a 32-entry register file. Then I wired them into a structural datapath with a control unit that executes ADDI, ADD, MUL, LW, SW, JAL, JR and BNE. Next to the processor, I built an array-summing accelerator with a valid/ready interface, so the same task can be compared in hardware and in software.</p>
-            <p>The full system, with memory, memory-mapped I/O and SPI program loading, runs on a DE0-CV FPGA board. Programs are written in assembly, loaded over SPI, take input from the switches and show results on seven-segment displays. Each piece is verified with directed, random and X-propagation tests and checked against a functional-level simulator. Having built the whole thing myself, I now help students debug their own designs and testbenches as a TA.</p>
-            <ul class="tags" aria-label="Tags">
-                <li>Verilog</li><li>RISC-V</li><li>FPGA</li><li>Computer Architecture</li><li>Hardware Acceleration</li><li>Assembly</li>
-            </ul>
-        </article>
-
         <article class="page project" data-route="/projects/drawing-car" data-parent="/projects" data-palette="drawingCar">
             <h2>Autonomous Drawing Car</h2>
             <p class="meta">Dec 2025 · Embedded</p>
@@ -229,6 +222,16 @@
             <p>Real-time audio synthesis in C using direct digital synthesis and fixed-point arithmetic under strict timing constraints. Block-based waveform generation with runtime parameter updates to eliminate audible artifacts.</p>
             <ul class="tags" aria-label="Tags">
                 <li>RP2040</li><li>C</li><li>DDS</li><li>DSP</li><li>SPI</li>
+            </ul>
+        </article>
+
+        <article class="page project" data-route="/projects/tinyrv1" data-parent="/projects" data-palette="tinyrv1">
+            <h2>TinyRV1 Processor + Accelerator</h2>
+            <p class="meta">Spring &amp; Fall 2026 · Digital Design · Cornell ECE 2300 · Teaching Assistant</p>
+            <p>I built a single-cycle processor for TinyRV1, a small subset of RISC-V, in Verilog and ran it on an FPGA. It's the capstone lab of ECE 2300 (Digital Logic and Computer Organization), which I now TA. I started with the RTL building blocks: muxes, registers, an ALU, a multiplier, an immediate generator and a 32-entry register file. Then I wired them into a structural datapath with a control unit that executes ADDI, ADD, MUL, LW, SW, JAL, JR and BNE. Next to the processor, I built an array-summing accelerator with a valid/ready interface, so the same task can be compared in hardware and in software.</p>
+            <p>The full system, with memory, memory-mapped I/O and SPI program loading, runs on a DE0-CV FPGA board. Programs are written in assembly, loaded over SPI, take input from the switches and show results on seven-segment displays. Each piece is verified with directed, random and X-propagation tests and checked against a functional-level simulator. Having built the whole thing myself, I now help students debug their own designs and testbenches as a TA.</p>
+            <ul class="tags" aria-label="Tags">
+                <li>Verilog</li><li>RISC-V</li><li>FPGA</li><li>Computer Architecture</li><li>Hardware Acceleration</li><li>Assembly</li>
             </ul>
         </article>
 
