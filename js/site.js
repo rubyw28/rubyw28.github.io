@@ -23,7 +23,6 @@
         aws: ['#ff9900', '#ffad1f', '#ffc247', '#f08000', '#ffb84d', '#ff8a00'],
         jpl: ['#1f6feb', '#3d8bfd', '#5aa9ff', '#8cc4ff', '#2155c4', '#fc3d21'],
         projects: ['#11a150', '#1fbf62', '#3ad67a', '#d4a82a', '#f0c83c', '#e6b422'],
-        golf: ['#2fa84f', '#4cc05f', '#6fd36a', '#9be070', '#e8d27a', '#f7fff0'],
         crowdcourse: ['#e0ff00', '#c8f000', '#ff9e85', '#ffb39e', '#ff3b30', '#1fd6c4'],
         flipper: ['#ff8200', '#ff9a1f', '#ffb040', '#ff6a00', '#ffc36b', '#ff8f2e'],
         airdropV4: ['#0f9d4a', '#17b95a', '#2fd36f', '#d4a82a', '#f0c83c', '#1aa653'],
@@ -43,7 +42,6 @@
         '#about': '/about',
         '#experience': '/experience',
         '#projects': '/projects',
-        '#mini-golf': '/mini-golf',
     };
 
     const root = document.documentElement;
@@ -170,9 +168,6 @@
         slot.pane.appendChild(page);
         page.scrollTop = 0;
         slot.layers.push(page);
-        if (page.querySelector('#miniGolfCanvas') && typeof window.resizeCanvas === 'function') {
-            requestAnimationFrame(() => window.resizeCanvas());
-        }
     }
 
     // Starting a video costs one long frame while the decoder spins up, so it

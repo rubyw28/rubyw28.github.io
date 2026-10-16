@@ -441,19 +441,6 @@ body {
     margin: 0 0.5em;
 }
 
-/* Mini golf */
-
-.canvas-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 0.5em;
-}
-
-#miniGolfCanvas {
-    border-radius: 50%;
-    touch-action: none;
-}
-
 /* ============================================================
    LIGHTBOX
    ============================================================ */
@@ -491,7 +478,6 @@ body {
 html:not(.js) #wall,
 html:not(.js) #frame,
 html:not(.js) .pane-close,
-html:not(.js) .canvas-container,
 html:not(.js) .pcb-toggle {
     display: none;
 }
